@@ -41,7 +41,6 @@ public class Chess {
 
 
         Board.setBoard(pieces);
-
         //print(board);
 
 
