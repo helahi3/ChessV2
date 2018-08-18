@@ -60,6 +60,7 @@ public class Chess {
         int y = -charY + '1' + 7;
 
         int[] arr = {x,y};
+
         return arr;
     }
 
@@ -76,13 +77,19 @@ public class Chess {
             System.out.println("Enter starting cell, followed by ending cell (In the form D2, D4). Enter 999 to quit");
             //	try {
             temp = sc.nextLine();
+
             arr = convertNotation(temp);
             startX = arr[1]; startY = arr[0];
 
             temp = sc.nextLine();
+
+            System.out.print("end: ");
+
             arr = convertNotation(temp);
-            endX = arr[0]; endY = arr[1];
+            endX = arr[1]; endY = arr[0];
             if(startX == 999) break;
+
+
             Board.movePiece(startX, startY, endX, endY);
 
 //			} catch (NullPointerException e) {

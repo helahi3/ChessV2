@@ -41,14 +41,15 @@ public class Cell {
     //Removes a piece from a spot, returning the old piece
     public Piece removePiece(){
         Piece temp = this.piece;
-        piece = null;
+        this.piece = null;
         return temp;
     }
 
     //Replaces the piece at a spot, returning the old piece
     public Piece replacePiece(Piece newPiece){
         Piece oldPiece = this.piece;
-        piece = newPiece;
+       // if(newPiece != null)
+            this.piece = newPiece;
         return oldPiece;
     }
 

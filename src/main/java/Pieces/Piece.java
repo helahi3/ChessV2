@@ -84,8 +84,8 @@ public abstract class Piece {
             if (!Board.kingInCheck(this.getColor())) {
                 legalMoves.add(destination);
             }
-            if (killedPiece != null)
-                Board.undoMove(start, destination, killedPiece);
+
+            Board.undoMove(start, destination, killedPiece);
         }
 
         return legalMoves;

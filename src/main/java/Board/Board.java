@@ -41,6 +41,8 @@ public class Board {
     //Checks if a cell has a piece of input color
     public static boolean containsPieceOfColor(int row, int col, Piece.PieceColor color){
 
+        System.out.println(row + " " + col);
+
         Piece temp = board[row][col].getPiece();
         if(temp == null)
             return false;
@@ -120,8 +122,6 @@ public class Board {
         Piece movingPiece = start.removePiece();
         Piece deadPiece = end.replacePiece(movingPiece);
 
-        if(deadPiece == null)
-            return null;
         return deadPiece;
     }
 
@@ -130,6 +130,7 @@ public class Board {
     public static void undoMove(Cell start, Cell end, Piece killedPiece){
         Piece movingPiece = end.getPiece();
         start.setPiece(movingPiece);
+
         end.replacePiece(killedPiece);
     }
 
@@ -147,18 +148,24 @@ public class Board {
         Cell startCell = board[sRow][sCol];
         Cell endCell = board[eRow][eCol];
 
+        //Get the piece at the starting point, return false otherwise
         Piece temp = startCell.getPiece();
         if(temp == null) {
             System.out.println("No piece there");
             return false;
         }
+
+        //Get a list of all legal moves for that piece
+        //Return false if
         ArrayList<Cell> possibleMoves = temp.getLegalMoves(temp.getPseudoLegalMoves());
         if(!possibleMoves.contains(endCell)) {
             System.out.println("cant move to that spot");
             return false;
         }
-        movePiece(startCell,endCell);
-        return true;
+        else {
+            movePiece(startCell, endCell);
+            return true;
+        }
     }
 
 

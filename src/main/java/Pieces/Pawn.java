@@ -65,15 +65,15 @@ public class Pawn extends Piece {
             //Checks [row-1][col+1]  and [row-1][col-1]
             //i.e. white pawn at d5 threatens pieces at e6 and c6
 
-            if(Board.containsPieceOfColor(this.getRow() - 1, this.getColumn() + 1, PieceColor.BLACK)
-                    && this.getColumn() + 1 < board.length && this.getRow() - 1 >= 0) {
+            if(this.getColumn() + 1 < board.length && this.getRow() - 1 >= 0
+                    && Board.containsPieceOfColor(this.getRow() - 1, this.getColumn() + 1, PieceColor.BLACK)) {
 
 
                 moves.add(board[getRow() - 1][getColumn() + 1]);
             }
 
             if(this.getColumn() - 1 >= 0 && this.getRow() - 1 >= 0
-                    && Board.containsPieceOfColor(this.getRow() + 1, this.getColumn() -1, PieceColor.WHITE)) {
+                    && Board.containsPieceOfColor(this.getRow() - 1, this.getColumn() -1, PieceColor.WHITE)) {
 
                 moves.add(board[getRow() - 1][getColumn() + 1]);
             }
