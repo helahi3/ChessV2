@@ -48,6 +48,16 @@ public abstract class Piece {
         return type;
     }
 
+    public boolean getHasMoved() { return hasMoved; }
+
+    public void changeHasMoved() { hasMoved = true; }
+
+    public void setNewLocation(Cell location) {
+        this.row = location.getRow();
+        this.column = location.getColumn();
+    }
+
+
     public abstract ArrayList<Cell> getPseudoLegalMoves();
 
 

@@ -149,21 +149,26 @@ public class Board {
         Cell endCell = board[eRow][eCol];
 
         //Get the piece at the starting point, return false otherwise
-        Piece temp = startCell.getPiece();
-        if(temp == null) {
+        Piece piece = startCell.getPiece();
+        if(piece == null) {
             System.out.println("No piece there");
             return false;
         }
 
         //Get a list of all legal moves for that piece
         //Return false if
-        ArrayList<Cell> possibleMoves = temp.getLegalMoves(temp.getPseudoLegalMoves());
+        ArrayList<Cell> possibleMoves = piece.getLegalMoves(piece.getPseudoLegalMoves());
         if(!possibleMoves.contains(endCell)) {
             System.out.println("cant move to that spot");
             return false;
         }
         else {
             movePiece(startCell, endCell);
+            if(piece.getHasMoved() == false)
+                piece.changeHasMoved();
+
+            piece.setNewLocation(endCell);
+
             return true;
         }
     }
