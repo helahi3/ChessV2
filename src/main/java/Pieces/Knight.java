@@ -4,12 +4,23 @@ import Board.*;
 
 import java.util.ArrayList;
 
+/**
+ * Knight object is subclass of Piece
+ * Implements abstract methods
+ */
 public class Knight extends Piece {
 
+    /**
+     * Constructor that sets piece type to be KNIGHT
+     */
     public Knight(int row, int column, PieceColor color) {
         super(row, column, color, PieceType.KNIGHT);
     }
 
+    /**
+     * Generates list of pseudolegal moves
+     * @return list of moves
+     */
     public ArrayList<Cell> getPseudoLegalMoves() {
 
         Cell[][] board = Board.getBoard();

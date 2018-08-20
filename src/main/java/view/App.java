@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 public class App {
 
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JButton[][] chessBoardSquares = new JButton[8][8];
+    private Tile[][] chessBoardSquares = new Tile[8][8];
     private Image[][] chessPieceImages = new Image[2][6];
     private JPanel chessBoard;
     private final JLabel message = new JLabel(
@@ -23,6 +23,8 @@ public class App {
             ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK
     };
     public static final int BLACK = 0, WHITE = 1;
+    private JToolBar tools;
+
 
     App() {
         initializeGui();
@@ -34,7 +36,7 @@ public class App {
 
         // set up the main GUI
         gui.setBorder(new EmptyBorder(5, 5, 5, 5));
-        JToolBar tools = new JToolBar();
+        tools = new JToolBar();
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
         Action newGameAction = new AbstractAction("New") {
@@ -99,7 +101,7 @@ public class App {
         Insets buttonMargin = new Insets(0, 0, 0, 0);
         for (int ii = 0; ii < chessBoardSquares.length; ii++) {
             for (int jj = 0; jj < chessBoardSquares[ii].length; jj++) {
-                JButton b = new JButton();
+                Tile b = new Tile(ii,jj);
                 b.setMargin(buttonMargin);
                 // our chess pieces are 64x64 px in size, so we'll
                 // 'fill this in' using a transparent icon..
@@ -114,6 +116,7 @@ public class App {
                     b.setBackground(Color.BLACK);
                 }
                 chessBoardSquares[jj][ii] = b;
+
             }
         }
 
@@ -149,19 +152,23 @@ public class App {
     private final void createImages() {
 
 
-//        try {
-//            URL url = new URL("http://i.stack.imgur.com/memI0.png");
-//            BufferedImage bi = ImageIO.read(url);
-//            for (int ii = 0; ii < 2; ii++) {
-//                for (int jj = 0; jj < 6; jj++) {
-//                    chessPieceImages[ii][jj] = bi.getSubimage(
-//                            jj * 64, ii * 64, 64, 64);
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.exit(1);
-//        }
+        try {
+            URL url = new URL("http://i.stack.imgur.com/memI0.png");
+            BufferedImage bi = ImageIO.read(url);
+            for (int ii = 0; ii < 2; ii++) {
+                for (int jj = 0; jj < 6; jj++) {
+                    chessPieceImages[ii][jj] = bi.getSubimage(
+                            jj * 64, ii * 64, 64, 64);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    public Tile[][] getChessBoardSquares() {
+        return chessBoardSquares;
     }
 
     /**
@@ -189,9 +196,12 @@ public class App {
         }
     }
 
-    public static void main(String[] args) {
-        Runnable r = new Runnable() {
+    public JToolBar getTools() {
+        return tools;
+    }
 
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
             public void run() {
                 App app = new App();
 
@@ -210,9 +220,6 @@ public class App {
                 f.setMinimumSize(f.getSize());
                 f.setVisible(true);
             }
-        };
-        // Swing GUIs should be created and updated on the EDT
-        // http://docs.oracle.com/javase/tutorial/uiswing/concurrency
-        SwingUtilities.invokeLater(r);
+        });
     }
 }

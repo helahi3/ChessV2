@@ -83,8 +83,6 @@ public class Chess {
 
             temp = sc.nextLine();
 
-            System.out.print("end: ");
-
             arr = convertNotation(temp);
             endX = arr[1]; endY = arr[0];
             if(startX == 999) break;
@@ -107,9 +105,7 @@ public class Chess {
             result += "\n";
         }
         System.out.println(result);//result;
-
     }
-
 
 
 }

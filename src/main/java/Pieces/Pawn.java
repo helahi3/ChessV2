@@ -4,13 +4,24 @@ import Board.*;
 
 import java.util.ArrayList;
 
+/**
+ * Pawn object is subclass of Piece
+ * Implements abstract methods
+ */
 public class Pawn extends Piece {
 
 
+    /**
+     * Constructor that sets piece type to be Pawn
+     */
     public Pawn(int row, int column, PieceColor color) {
         super(row, column, color, PieceType.PAWN);
     }
 
+    /**
+     * Generates list of pseudolegal moves
+     * @return list of moves
+     */
     @Override
     public ArrayList<Cell> getPseudoLegalMoves() {
         Cell[][] board = Board.getBoard();
@@ -27,7 +38,6 @@ public class Pawn extends Piece {
                 if(!hasMoved && Board.isCellEmpty(this.getRow() + 2, this.getColumn()))
                     moves.add(board[getRow() + 2][getColumn()]);
             }
-
 
             //Checking if the attack-able spots contain enemy piece
             //Making sure it does not exceed the size of the board
@@ -68,7 +78,6 @@ public class Pawn extends Piece {
             if(this.getColumn() + 1 < board.length && this.getRow() - 1 >= 0
                     && Board.containsPieceOfColor(this.getRow() - 1, this.getColumn() + 1, PieceColor.BLACK)) {
 
-
                 moves.add(board[getRow() - 1][getColumn() + 1]);
             }
 
@@ -77,7 +86,6 @@ public class Pawn extends Piece {
 
                 moves.add(board[getRow() - 1][getColumn() + 1]);
             }
-
         }
 
         return moves;
