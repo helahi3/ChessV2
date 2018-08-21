@@ -101,7 +101,7 @@ public class Cell {
             return listOfAttackableCells;
 
         Piece piece = this.getPiece();
-        return piece.getLegalMoves(piece.getPseudoLegalMoves());
+        return piece.getLegalMoves();
     }
 
 

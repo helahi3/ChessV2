@@ -2,7 +2,6 @@ package Pieces;
 
 import Board.Board;
 import Board.Cell;
-import Board.Move;
 
 import java.util.ArrayList;
 
@@ -135,10 +134,10 @@ public abstract class Piece {
 
     /**
      * Converts pseudoLegalMoves into legal moves by checking if they leave king in check
-     * @param pseudoLegalMoves list of pseudo legal moves
      * @return list of legal moves
      */
-    public ArrayList<Cell> getLegalMoves(ArrayList<Cell> pseudoLegalMoves) {
+    public ArrayList<Cell> getLegalMoves() {
+        ArrayList<Cell> pseudoLegalMoves = this.getPseudoLegalMoves();
         Cell[][] board = Board.getBoard();
 
         Cell start = board[this.getRow()][this.getColumn()];
@@ -149,7 +148,7 @@ public abstract class Piece {
         //Make each move, check if it leaves the king in check, then undo it
         //if a piece was killed during the move, revert that too
         for (Cell destination : pseudoLegalMoves) {
-            Piece killedPiece = Board.movePiece(start, destination);
+            Piece killedPiece = Board.simpleMove(start, destination);
 
             if (!Board.kingInCheck(this.getColor())) {
                 legalMoves.add(destination);

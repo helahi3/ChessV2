@@ -8,7 +8,7 @@ import javax.swing.border.*;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
-public class App {
+public class GUI {
 
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
     private Tile[][] chessBoardSquares = new Tile[8][8];
@@ -26,7 +26,7 @@ public class App {
     private JToolBar tools;
 
 
-    App() {
+    GUI() {
         initializeGui();
     }
 
@@ -111,11 +111,15 @@ public class App {
                 if ((jj % 2 == 1 && ii % 2 == 1)
                         //) {
                         || (jj % 2 == 0 && ii % 2 == 0)) {
-                    b.setBackground(Color.WHITE);
+                    b.setForeground(Color.WHITE);
+                    b.setContentAreaFilled(false);
+                    b.setOpaque(true);
                 } else {
-                    b.setBackground(Color.BLACK);
+                    b.setForeground(Color.BLACK);
+                    b.setContentAreaFilled(true);
+                    b.setOpaque(false);
                 }
-                chessBoardSquares[jj][ii] = b;
+                chessBoardSquares[ii][jj] = b;
 
             }
         }
@@ -138,7 +142,7 @@ public class App {
                         chessBoard.add(new JLabel("" + (9-(ii + 1)),
                                 SwingConstants.CENTER));
                     default:
-                        chessBoard.add(chessBoardSquares[jj][ii]);
+                        chessBoard.add(chessBoardSquares[ii][jj]);
                 }
             }
         }
@@ -178,20 +182,20 @@ public class App {
         message.setText("Make your move!");
         // set up the black pieces
         for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[ii][0].setIcon(new ImageIcon(
+            chessBoardSquares[0][ii].setIcon(new ImageIcon(
                     chessPieceImages[BLACK][STARTING_ROW[ii]]));
         }
         for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[ii][1].setIcon(new ImageIcon(
+            chessBoardSquares[1][ii].setIcon(new ImageIcon(
                     chessPieceImages[BLACK][PAWN]));
         }
         // set up the white pieces
         for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[ii][6].setIcon(new ImageIcon(
+            chessBoardSquares[6][ii].setIcon(new ImageIcon(
                     chessPieceImages[WHITE][PAWN]));
         }
         for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[ii][7].setIcon(new ImageIcon(
+            chessBoardSquares[7][ii].setIcon(new ImageIcon(
                     chessPieceImages[WHITE][STARTING_ROW[ii]]));
         }
     }
@@ -203,10 +207,10 @@ public class App {
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                App app = new App();
+                GUI GUI = new GUI();
 
                 JFrame f = new JFrame("ChessChamp");
-                f.add(app.getGui());
+                f.add(GUI.getGui());
                 // Ensures JVM closes after frame(s) closed and
                 // all non-daemon threads are finished
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

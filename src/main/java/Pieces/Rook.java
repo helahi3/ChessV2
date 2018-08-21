@@ -33,20 +33,4 @@ public class Rook extends Piece {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public ArrayList<Move> getLegalMoves() {
-        return null;
-    }
 }
