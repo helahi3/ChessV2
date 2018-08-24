@@ -87,7 +87,7 @@ public class Cell {
     public Piece replacePiece(Piece newPiece){
         Piece oldPiece = this.piece;
        // if(newPiece != null)
-            this.piece = newPiece;
+        this.piece = newPiece;
         return oldPiece;
     }
 
@@ -117,7 +117,7 @@ public class Cell {
      * for testing on console
      * @return cell as string
      */
-    public String toString() {
+    public String toString1() {
         String res = "{ " + this.piece + " }";
         String res2 = "{    }";
         if(this.isEmpty()) return res2;
@@ -129,8 +129,8 @@ public class Cell {
      * for testing on console
      * @return cell as string
      */
-    public String toString2() {
-        String res = "{" + row + "," + column + "}";
+    public String toString() {
+        String res = "cell: {" + row + "," + column + "}";
         return res;
     }
 

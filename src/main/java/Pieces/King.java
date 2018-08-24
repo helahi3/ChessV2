@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
-
-
     public King(int row, int column, PieceColor color) {
         super(row, column, color, PieceType.KING);
     }
@@ -33,20 +31,17 @@ public class King extends Piece {
             offsetY = directions[i][1];
 
             //Make sure move doesnt take you off the board
-            if(x + offsetX > 0 && x + offsetX < board.length
-                    && y + offsetY > 0 && y + offsetY < board.length){
+            if(x + offsetX >= 0 && x + offsetX < board.length
+                    && y + offsetY >= 0 && y + offsetY < board.length){
 
                 //Make sure there is either no piece, or an enemy piece at the spot
                 Cell temp = board[x + offsetX][y + offsetY];
                 if(temp.getPiece() == null || temp.getPiece().getColor() != this.getColor()){
                     moves.add(temp);
                 }
-
             }
-
         }
-
-        return null;
+        return moves;
     }
 
 }

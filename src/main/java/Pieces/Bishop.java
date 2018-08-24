@@ -27,6 +27,7 @@ public class Bishop extends Piece {
         int[][] offsetMultiplier = {{-1,-1},{-1,1},{1,-1},{1,1}}; //4 directions NW, NE, SW, SE
         int x = getRow(); int y = getColumn();
 
+
         return Piece.slidingPieceMoves(x,y,this.getColor(),offsetMultiplier);
 
     }

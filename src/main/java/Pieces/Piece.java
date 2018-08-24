@@ -123,9 +123,9 @@ public abstract class Piece {
         if(this.getType() == PieceType.KING)
             return false;
 
-        if(this.getPseudoLegalMoves().contains(kingLocation))
+        if(this.getPseudoLegalMoves().contains(kingLocation)) {
             return true;
-
+        }
         return false;
     }
 
@@ -140,6 +140,7 @@ public abstract class Piece {
         ArrayList<Cell> pseudoLegalMoves = this.getPseudoLegalMoves();
         Cell[][] board = Board.getBoard();
 
+
         Cell start = board[this.getRow()][this.getColumn()];
         ArrayList<Cell> legalMoves = new ArrayList<Cell>();
 
@@ -150,16 +151,20 @@ public abstract class Piece {
         for (Cell destination : pseudoLegalMoves) {
             Piece killedPiece = Board.simpleMove(start, destination);
 
+
             if (!Board.kingInCheck(this.getColor())) {
+
                 legalMoves.add(destination);
             }
 
             Board.undoMove(start, destination, killedPiece);
         }
 
+        System.out.println("pl moves: " + pseudoLegalMoves);
+        System.out.println("legalmoves: " + legalMoves);
+
         return legalMoves;
     }
-
 
 
     /**
@@ -190,8 +195,8 @@ public abstract class Piece {
 
 
             //Keep looping while (x,y) + offset is part of board
-            while(x + offsetX > 0 && x + offsetX < board.length
-                    && y + offsetY > 0 && y + offsetY < board.length) {
+            while(x + offsetX >= 0 && x + offsetX < board.length
+                    && y + offsetY >= 0 && y + offsetY < board.length) {
 
                 //If the cell is empty, add the move to the list and continue
                 if (Board.isCellEmpty(x + offsetX, y + offsetY)) {
@@ -215,6 +220,9 @@ public abstract class Piece {
 
             }
         }
+
+
+
         return moves;
     }
 
@@ -233,7 +241,7 @@ public abstract class Piece {
      * @return First letter of piece type and first letter of piece color (PW, BR etc)
      */
     public String toString(){
-        return "" + this.type.toString().charAt(0) + this.color.toString().charAt(0);
+        return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
     }
 
 }

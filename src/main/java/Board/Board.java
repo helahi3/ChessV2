@@ -2,6 +2,7 @@ package Board;
 
 import Pieces.*;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,10 @@ public class Board {
     private static Cell[][] board;
     private static List<Piece> whitePieces = new ArrayList<Piece>();
     private static List<Piece> blackPieces = new ArrayList<Piece>();
-    private static Piece whiteKing;
+    public static Piece whiteKing;
     private static Piece blackKing;
+    public static boolean check = true;
+    public static boolean checkmate = false;
 
 
     /**
@@ -136,10 +139,19 @@ public class Board {
      * @return the relevant king
      */
     public static Piece getKing(Piece.PieceColor color) {
-        if(color == Piece.PieceColor.WHITE)
-            return whiteKing;
-        else
-            return blackKing;
+        if(color == Piece.PieceColor.WHITE){
+            for(Piece piece : whitePieces){
+                if(piece.getType() == Piece.PieceType.KING)
+                    return piece;
+            }
+        }
+        else{
+            for(Piece piece : blackPieces){
+                if(piece.getType() == Piece.PieceType.KING)
+                    return piece;
+            }
+        }
+        return null;//should be unreachable code. Figure out how to refactor it?
     }
 
     /**
@@ -150,8 +162,8 @@ public class Board {
     public static boolean kingInCheck(Piece.PieceColor color) {
         Piece king = getKing(color);
 
+
         //loop through all enemy pieces, checking if they're threatening the enemy king
-        //todo: Only loop through pieces with sliding moves? Maybe add isInCheckFlag for each piece?
         if(color == Piece.PieceColor.WHITE){
             for(Piece piece : blackPieces){
                 if(piece.isThreateningEnemyKing(king))
@@ -175,6 +187,7 @@ public class Board {
     public static Piece simpleMove(Cell start, Cell end){
         Piece movingPiece = start.removePiece();
         Piece deadPiece = end.replacePiece(movingPiece);
+        killPiece(deadPiece);
 
         return deadPiece;
     }
@@ -189,8 +202,8 @@ public class Board {
         Piece movingPiece = end.getPiece();
         start.setPiece(movingPiece);
 
-
         end.replacePiece(killedPiece);
+        addPiece(killedPiece);
     }
 
     /**
@@ -238,7 +251,42 @@ public class Board {
 
             piece.setNewLocation(endCell);
 
+            //if we are moving out of check, change flag
+            if(check == true)
+                check = false;
+
+            //if this piece is now threatening enemy king, make flag check
+            if(piece.isThreateningEnemyKing(getKing(piece.getEnemyColor())))
+                check = true;
+
+
             return true;
+        }
+    }
+
+    /**
+     * Remove the killed piece from the list of pieces
+     * @param piece the piece being killed
+     */
+    public static void killPiece(Piece piece){
+        if(piece == null) return;
+        if(piece.getColor() == Piece.PieceColor.WHITE){
+            whitePieces.remove(piece);
+        } else {
+            blackPieces.remove(piece);
+        }
+    }
+
+    /**
+     * Replace a piece in the list. Mainly for undoing kills
+     * @param piece the piece being added to the list
+     */
+    public static void addPiece(Piece piece){
+        if(piece == null) return;
+        if(piece.getColor() == Piece.PieceColor.WHITE){
+            whitePieces.add(piece);
+        } else {
+            blackPieces.add(piece);
         }
     }
 
@@ -272,9 +320,16 @@ public class Board {
         Board.setBoard(pieces);
         //print(board);
 
-
     }
 
+    public static void clearBoard(){
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                board[i][j] = new Cell(i,j);
+            }
+        }
+
+    }
 
 
     //////////////////////////////////////////////////////////////////////////////////////////

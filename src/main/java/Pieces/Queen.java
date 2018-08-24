@@ -26,6 +26,9 @@ public class Queen extends Piece {
         int[][] offsetMultiplier = {{-1,-1},{-1,1},{1,-1},{1,1},{-1,0},{1,0},{0,-1},{0,1}}; //8 directions N, S, W, E {-1,0},{1,0},{0,-1},{0,1}
         int x = getRow(); int y = getColumn();
 
+        System.out.println("Getting PL moves for " + this);
+
+
         return Piece.slidingPieceMoves(x,y,this.getColor(),offsetMultiplier);
     }
 

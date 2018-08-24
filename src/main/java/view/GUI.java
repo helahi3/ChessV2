@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.io.File;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
@@ -12,10 +13,11 @@ public class GUI {
 
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
     private Tile[][] chessBoardSquares = new Tile[8][8];
-    private Image[][] chessPieceImages = new Image[2][6];
+    public static Image[][] chessPieceImages = new Image[2][6];
     private JPanel chessBoard;
     private final JLabel message = new JLabel(
-            "Chess Champ is ready to play!");
+            "Hamza's Chess Game!");
+    private final JLabel message2 = new JLabel("");
     private static final String COLS = "ABCDEFGH";
     public static final int QUEEN = 0, KING = 1,
             ROOK = 2, KNIGHT = 3, BISHOP = 4, PAWN = 5;
@@ -46,12 +48,11 @@ public class GUI {
             }
         };
         tools.add(newGameAction);
-        tools.add(new JButton("Save")); // TODO - add functionality!
-        tools.add(new JButton("Restore")); // TODO - add functionality!
-        tools.addSeparator();
-        tools.add(new JButton("Resign")); // TODO - add functionality!
+        tools.add(new JButton("Undo")); // TODO - add functionality!
         tools.addSeparator();
         tools.add(message);
+        tools.addSeparator();
+        tools.add(message2);
 
         gui.add(new JLabel("?"), BorderLayout.LINE_START);
 
@@ -155,21 +156,34 @@ public class GUI {
     //todo: create image thing
     private final void createImages() {
 
-
         try {
-            URL url = new URL("http://i.stack.imgur.com/memI0.png");
-            BufferedImage bi = ImageIO.read(url);
-            for (int ii = 0; ii < 2; ii++) {
-                for (int jj = 0; jj < 6; jj++) {
-                    chessPieceImages[ii][jj] = bi.getSubimage(
-                            jj * 64, ii * 64, 64, 64);
-                }
-            }
-        } catch (Exception e) {
+            chessPieceImages[0][0] = ImageIO.read(new File("images/bking.png"));
+            chessPieceImages[0][1] = ImageIO.read(new File("images/bqueen.png"));
+            chessPieceImages[0][2] = ImageIO.read(new File("images/brook.png"));
+            chessPieceImages[0][3] = ImageIO.read(new File("images/bknight.png"));
+            chessPieceImages[0][4] = ImageIO.read(new File("images/bbishop.png"));
+            chessPieceImages[0][5] = ImageIO.read(new File("images/bpawn.png"));
+
+            chessPieceImages[1][0] = ImageIO.read(new File("images/wking.png"));
+            chessPieceImages[1][1] = ImageIO.read(new File("images/wqueen.png"));
+            chessPieceImages[1][2] = ImageIO.read(new File("images/wrook.png"));
+            chessPieceImages[1][3] = ImageIO.read(new File("images/wknight.png"));
+            chessPieceImages[1][4] = ImageIO.read(new File("images/wbishop.png"));
+            chessPieceImages[1][5] = ImageIO.read(new File("images/wpawn.png"));
+
+        } catch (Exception e){
             e.printStackTrace();
-            System.exit(1);
         }
     }
+
+    public void setMessage(String msg){
+        message.setText(msg);
+    }
+
+    public void setMessage2(String msg){
+        message2.setText(msg);
+    }
+
 
     public Tile[][] getChessBoardSquares() {
         return chessBoardSquares;
@@ -179,51 +193,30 @@ public class GUI {
      * Initializes the icons of the initial chess board piece places
      */
     private final void setupNewGame() {
-        message.setText("Make your move!");
-        // set up the black pieces
-        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[0][ii].setIcon(new ImageIcon(
-                    chessPieceImages[BLACK][STARTING_ROW[ii]]));
-        }
-        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[1][ii].setIcon(new ImageIcon(
-                    chessPieceImages[BLACK][PAWN]));
-        }
-        // set up the white pieces
-        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[6][ii].setIcon(new ImageIcon(
-                    chessPieceImages[WHITE][PAWN]));
-        }
-        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-            chessBoardSquares[7][ii].setIcon(new ImageIcon(
-                    chessPieceImages[WHITE][STARTING_ROW[ii]]));
-        }
+        //       message.setText("Make your move!");
+//        endGame();
+//        // set up the black pieces
+//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
+//            chessBoardSquares[0][ii].setIcon(new ImageIcon(
+//                    chessPieceImages[BLACK][STARTING_ROW[ii]]));
+//        }
+//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
+//            chessBoardSquares[1][ii].setIcon(new ImageIcon(
+//                    chessPieceImages[BLACK][PAWN]));
+//        }
+//        // set up the white pieces
+//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
+//            chessBoardSquares[6][ii].setIcon(new ImageIcon(
+//                    chessPieceImages[WHITE][PAWN]));
+//        }
+//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
+//            chessBoardSquares[7][ii].setIcon(new ImageIcon(
+//                    chessPieceImages[WHITE][STARTING_ROW[ii]]));
+//        }
     }
+
 
     public JToolBar getTools() {
         return tools;
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GUI GUI = new GUI();
-
-                JFrame f = new JFrame("ChessChamp");
-                f.add(GUI.getGui());
-                // Ensures JVM closes after frame(s) closed and
-                // all non-daemon threads are finished
-                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                // See https://stackoverflow.com/a/7143398/418556 for demo.
-                f.setLocationByPlatform(true);
-
-                // ensures the frame is the minimum size it needs to be
-                // in order display the components within it
-                f.pack();
-                // ensures the minimum size is enforced.
-                f.setMinimumSize(f.getSize());
-                f.setVisible(true);
-            }
-        });
     }
 }

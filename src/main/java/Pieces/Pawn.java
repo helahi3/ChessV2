@@ -53,7 +53,7 @@ public class Pawn extends Piece {
             if(this.getColumn() - 1 >= 0 && this.getRow() + 1 < board.length
                     && Board.containsPieceOfColor(this.getRow() + 1, this.getColumn() -1, PieceColor.WHITE)) {
 
-                moves.add(board[getRow() + 1][getColumn() + 1]);
+                moves.add(board[getRow() + 1][getColumn() - 1]);
             }
 
 
@@ -82,11 +82,12 @@ public class Pawn extends Piece {
             }
 
             if(this.getColumn() - 1 >= 0 && this.getRow() - 1 >= 0
-                    && Board.containsPieceOfColor(this.getRow() - 1, this.getColumn() -1, PieceColor.WHITE)) {
+                    && Board.containsPieceOfColor(this.getRow() - 1, this.getColumn() -1, PieceColor.BLACK)) {
 
-                moves.add(board[getRow() - 1][getColumn() + 1]);
+                moves.add(board[getRow() - 1][getColumn() - 1]);
             }
         }
+
 
         return moves;
     }

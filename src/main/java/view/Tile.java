@@ -1,7 +1,12 @@
 package view;
 
+import Board.*;
+import Pieces.Piece;
+
 import javax.swing.*;
 import java.awt.*;
+
+import static Board.Board.getBoard;
 
 public class Tile extends JButton {
 
@@ -41,6 +46,11 @@ public class Tile extends JButton {
             isSelected = false;
         }
        // this.setBackground(Color.ORANGE);
+    }
+
+    public Piece getPiece(){
+        Cell[][] board = Board.getBoard();
+        return board[row][col].getPiece();
     }
 
     @Override
