@@ -38,6 +38,27 @@ public class ViewController implements Serializable {
        
     }
 
+    public void initAIController(){
+    }
+
+    private void doBlacksTurn() {
+        //Get the move coordinates
+        int[] move = EngineController.move();
+
+        int startX = move[0], startY = move[1], endX = move[2], endY = move[3];
+
+        //Move the tile
+        Tile start = chessBoardSquares[startX][startY];
+        Tile end = chessBoardSquares[endX][endY];
+        movePiece(start,end);
+
+        //move the board
+        Board.movePiece(startX, startY, endX, endY);
+
+        //end the turn
+        turnComplete();
+    }
+
     public void initController(){
 
         ((JButton) gui.getTools().getComponentAtIndex(0)).addActionListener(e -> setupNewGame());
@@ -50,12 +71,18 @@ public class ViewController implements Serializable {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
+                        if(!isWhitesTurn())
+                            doBlacksTurn();
+
                         //Get the selected square and its attributes
                         Tile selectedSquare = (Tile) e.getSource();
                         int row = selectedSquare.getRow(), col = selectedSquare.getCol();
 
                         //Check if its the first click or the second click
                         if(firstClick){
+
+                            gui.setMessage2("");
+
                             if(board[row][col].isEmpty()){} //do nothing if clicked an empty spot
 
                             //get a list of tiles that can be moved to, then set firstClick to false

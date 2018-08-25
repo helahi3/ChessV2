@@ -1,5 +1,6 @@
 package view;
 
+import Controller.EngineController;
 import Controller.ViewController;
 
 import javax.swing.*;
@@ -14,10 +15,13 @@ public class TestingApp {
 
     static ViewController vc;
     static GUI gui;
+    static EngineController ec;
 
     public static void main(String[] args){
         gui = new GUI();
         vc = new ViewController(gui);
+        ec = new EngineController(gui);
+
 
         JFrame f = new JFrame("Java Chess");
         f.add(gui.getGui());
@@ -34,7 +38,7 @@ public class TestingApp {
         f.setMinimumSize(f.getSize());
         f.setVisible(true);
         vc.initController();
-
+        //vc.initAIController();
 
     }
 
