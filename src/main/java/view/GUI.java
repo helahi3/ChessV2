@@ -18,6 +18,7 @@ public class GUI {
     private final JLabel message = new JLabel(
             "Hamza's Chess Game!");
     private final JLabel message2 = new JLabel("");
+    private final JLabel message3 = new JLabel("");
     private static final String COLS = "ABCDEFGH";
     public static final int QUEEN = 0, KING = 1,
             ROOK = 2, KNIGHT = 3, BISHOP = 4, PAWN = 5;
@@ -53,6 +54,8 @@ public class GUI {
         tools.add(message);
         tools.addSeparator();
         tools.add(message2);
+        tools.addSeparator();
+        tools.add(message3);
 
         gui.add(new JLabel("?"), BorderLayout.LINE_START);
 
@@ -183,6 +186,8 @@ public class GUI {
     public void setMessage2(String msg){
         message2.setText(msg);
     }
+
+    public void setMessage3(String msg) { message3.setText(msg); }
 
 
     public Tile[][] getChessBoardSquares() {

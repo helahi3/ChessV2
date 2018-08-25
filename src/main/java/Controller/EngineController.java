@@ -11,6 +11,7 @@ public class EngineController {
     private static ChessEngine engine;
 
 
+
     public EngineController(GUI gui) {
         this.gui = gui;
         chessBoardSquares = gui.getChessBoardSquares();

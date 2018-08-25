@@ -16,6 +16,9 @@ import static view.GUI.*;
 
 public class ViewController implements Serializable {
 
+    /**
+     * private fields
+     */
     private GUI gui;
     private Tile[][] chessBoardSquares;
     private boolean firstClick = true;
@@ -25,6 +28,10 @@ public class ViewController implements Serializable {
     private ArrayList<Tile> canMoveTo = new ArrayList<Tile>();
     private Tile tempTile;
 
+    /**
+     * Constructor that intializes the fields, the view, and the model
+     * @param gui gui
+     */
     public ViewController(GUI gui){
         this.gui = gui;
         this.chessBoardSquares = gui.getChessBoardSquares();
@@ -41,6 +48,9 @@ public class ViewController implements Serializable {
     public void initAIController(){
     }
 
+    /**
+     * Does black's turn, getting a move from the engine and making the move
+     */
     private void doBlacksTurn() {
         //Get the move coordinates
         int[] move = EngineController.move();
@@ -59,6 +69,12 @@ public class ViewController implements Serializable {
         turnComplete();
     }
 
+    /**
+     * Initializes the controller
+     * Adds an action listener to each tile
+     * Implements game logic (i.e. white and black do turn sequentially
+     * //todo: refactor by putting movement logic in separate method
+     */
     public void initController(){
 
         ((JButton) gui.getTools().getComponentAtIndex(0)).addActionListener(e -> setupNewGame());
@@ -71,9 +87,10 @@ public class ViewController implements Serializable {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
-                        if(!isWhitesTurn())
+                        if(!isWhitesTurn()) {
+                            gui.setMessage3("");
                             doBlacksTurn();
-
+                        }
                         //Get the selected square and its attributes
                         Tile selectedSquare = (Tile) e.getSource();
                         int row = selectedSquare.getRow(), col = selectedSquare.getCol();
@@ -103,6 +120,8 @@ public class ViewController implements Serializable {
                             if(canMoveTo.contains(selectedSquare)) {
                                 movePiece(tempTile, selectedSquare);
 
+                                gui.setMessage3("Click on any empty square for black's move");
+
                                 turnComplete();
 
                             } else {
@@ -111,17 +130,15 @@ public class ViewController implements Serializable {
                             firstClick = true;
                             tempTile = null;
                         }
-
-
                     }
                 });
-
-
-
             }
         }
     }
 
+    /**
+     * Ends the turn by displaying a message
+     */
     private void turnComplete(){
         turn++;
         if(isWhitesTurn())
@@ -131,12 +148,22 @@ public class ViewController implements Serializable {
         checkForCheck();
     }
 
+    /**
+     * Checks which side's turn
+     * @return true if white's turn
+     */
     private boolean isWhitesTurn(){
         if(turn % 2 == 0)
             return true;
         return false;
     }
 
+    /**
+     * Confirms whether the correct side's piece was selected
+     * @param whiteTurn if its white's turn
+     * @param tile the tile selected
+     * @return whether the tile has a piece of appropriate color
+     */
     private boolean correctPieceClicked(boolean whiteTurn, Tile tile){
         Piece.PieceColor color = tile.getPiece().getColor();
         if(whiteTurn &&
@@ -148,7 +175,10 @@ public class ViewController implements Serializable {
         return false;
     }
 
-
+    /**
+     * Looks at the piece on the tile
+     * @param tile the tile selected
+     */
     private void checkPiece(Tile tile){
         Piece piece = tile.getPiece();
         if(piece == null)
@@ -157,14 +187,17 @@ public class ViewController implements Serializable {
             gui.setMessage(piece.toString());
     }
 
+    /**
+     * Looks at board to see if a team is under check
+     */
     private void checkForCheck() {
-
         if(Board.check == true)
             gui.setMessage("Check!");
-
-
     }
 
+    /**
+     * Set up a new game by putting all the pieces on the view
+     */
     private void setupNewGame() {
         gui.setMessage("New Game");
     //    endGame();
@@ -203,6 +236,11 @@ public class ViewController implements Serializable {
     }
 
 
+    /**
+     * Move a piece icon from one tile to another
+     * @param start starting tile
+     * @param end ending tile
+     */
     private void movePiece(Tile start, Tile end){
         Icon icon = start.getIcon();
         start.setIcon(null);
@@ -211,12 +249,21 @@ public class ViewController implements Serializable {
         Board.movePiece(start.getRow(), start.getCol(), end.getRow(), end.getCol());
     }
 
+    /**
+     * Color a particular tile
+     * //todo: appears to be useless method
+     * @param tile
+     */
     private void highlight(Tile tile){
         tile.highlight();
 
     }
 
-
+    /**
+     * Converts a List of legal moves in Cell form to Tile objects
+     * @param legalMoves list of cell objects
+     * @return list of legal moves in tile format
+     */
     private ArrayList<Tile> cellsToTiles(ArrayList<Cell> legalMoves){
         ArrayList<Tile> tiles = new ArrayList<Tile>();
         for(Cell cell : legalMoves){
