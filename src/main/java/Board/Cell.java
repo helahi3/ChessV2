@@ -3,7 +3,6 @@ package Board;
 import Pieces.Piece;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Cell object that makes up the individual squares of the chess board
@@ -19,8 +18,8 @@ public class Cell {
 
     /**
      * Constructor
-     * @param row
-     * @param column
+     * @param row rank (1-8)
+     * @param column file (A-H)
      */
     public Cell(int row, int column) {
         this.row = row;
@@ -73,7 +72,7 @@ public class Cell {
      * Remove the piece from the cell
      * @return the removed piece
      */
-    public Piece removePiece(){
+    Piece removePiece(){
         Piece temp = this.piece;
         this.piece = null;
         return temp;
@@ -84,7 +83,7 @@ public class Cell {
      * @param newPiece the new piece to be put on the cell
      * @return the old piece that was removed
      */
-    public Piece replacePiece(Piece newPiece){
+    Piece replacePiece(Piece newPiece){
         Piece oldPiece = this.piece;
 
         this.piece = newPiece;
@@ -120,8 +119,10 @@ public class Cell {
     public String toString2() {
         String res = "{ " + this.piece + " }";
         String res2 = "{    }";
-        if(this.isEmpty()) return res2;
-        else return res;
+        if(this.isEmpty())
+            return res2;
+        else
+            return res;
 
     }
 
@@ -130,8 +131,7 @@ public class Cell {
      * @return cell as string
      */
     public String toString() {
-        String res = "cell: {" + row + "," + column + "}";
-        return res;
+        return "cell: {" + row + "," + column + "}";
     }
 
 

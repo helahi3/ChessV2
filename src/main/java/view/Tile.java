@@ -6,15 +6,13 @@ import Pieces.Piece;
 import javax.swing.*;
 import java.awt.*;
 
-import static Board.Board.getBoard;
-
 public class Tile extends JButton {
 
     private int row, col;
     private boolean isSelected = false;
     private Color defaultColor;
 
-    public Tile(int row, int col) {
+    Tile(int row, int col) {
         this.row = row;
         this.col = col;
         defaultColor = this.getForeground();

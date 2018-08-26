@@ -11,11 +11,21 @@ public class ChessEngine {
 
     /**
      * Modify this method to select which AI to use (playEngine1 etc.)
-     * @return
+     * @return move coordinates
      */
     public int[] play(){
         return playEngine2();
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////    /////////////////////
+    ///////////     //////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -29,7 +39,7 @@ public class ChessEngine {
      * Will always kill a piece if possible
      * @return coordinates of move
      */
-    public int[] playEngine2() {
+    private int[] playEngine2() {
         ArrayList<Cell> moves;
         List<Piece> pieces = getPieces(Piece.PieceColor.BLACK);
 
@@ -55,8 +65,8 @@ public class ChessEngine {
             }
         }
 
-        //If no destination/piece, that means no piece can be killed, so return a random move
-        if(destination == null || pieceToMove == null)
+        //If no destination, that means no piece can be killed, so return a random move
+        if(destination == null)
             return playEngine1();
 
 
@@ -76,7 +86,7 @@ public class ChessEngine {
      * Starting point for engine
      * @return coordinates of move
      */
-    public int[] playEngine1(){
+    private int[] playEngine1(){
         Piece randomPiece;
         ArrayList<Cell> moves;
         do{
@@ -84,8 +94,7 @@ public class ChessEngine {
             moves = randomPiece.getLegalMoves();
         } while (moves.size() == 0);
 
-        int[] move = doMove(randomPiece, getRandomMove(moves));
-        return move;
+        return doMove(randomPiece, getRandomMove(moves));
     }
 
     /**
@@ -93,7 +102,7 @@ public class ChessEngine {
      * @param moves list of moves
      * @return a random move from that list
      */
-    public Cell getRandomMove(ArrayList<Cell> moves){
+    private Cell getRandomMove(ArrayList<Cell> moves){
         int randNum = (int) (Math.random() * moves.size());
         return moves.get(randNum);
     }
@@ -102,17 +111,11 @@ public class ChessEngine {
      * Get a random piece (black)
      * @return a random piece from piece list
      */
-    public Piece getRandomPiece(){
+    private Piece getRandomPiece(){
         ArrayList<Piece> blackPieces = (ArrayList<Piece>) Board.getBlackPieces();
 
-        while(true) {
-
-            int randNum = (int) (Math.random() * blackPieces.size());
-            Piece randomPiece = blackPieces.get(randNum);
-
-            return randomPiece;
-
-        }
+        int randNum = (int) (Math.random() * blackPieces.size());
+        return blackPieces.get(randNum);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////

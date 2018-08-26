@@ -1,14 +1,12 @@
 package Controller;
 
 import Pieces.Piece;
-import com.sun.tools.internal.xjc.generator.util.WhitespaceNormalizer;
+
 import view.GUI;
 import Board.*;
 import view.Tile;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -25,7 +23,7 @@ public class ViewController implements Serializable {
     private Cell[][] board;
     private int turn = 0;
 
-    private ArrayList<Tile> canMoveTo = new ArrayList<Tile>();
+    private ArrayList<Tile> canMoveTo = new ArrayList<>();
     private Tile tempTile;
 
     /**
@@ -83,53 +81,50 @@ public class ViewController implements Serializable {
             for(int j=0; j<chessBoardSquares[i].length; j++){
 
                 //Action listener for clicking the tiles
-                chessBoardSquares[i][j].addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+                chessBoardSquares[i][j].addActionListener(e -> {
 
-                        if(!isWhitesTurn()) {
-                            gui.setMessage3("");
-                            doBlacksTurn();
-                        }
-                        //Get the selected square and its attributes
-                        Tile selectedSquare = (Tile) e.getSource();
-                        int row = selectedSquare.getRow(), col = selectedSquare.getCol();
+                    if(!isWhitesTurn()) {
+                        gui.setMessage3("");
+                        doBlacksTurn();
+                    }
+                    //Get the selected square and its attributes
+                    Tile selectedSquare = (Tile) e.getSource();
+                    int row = selectedSquare.getRow(), col = selectedSquare.getCol();
 
-                        //Check if its the first click or the second click
-                        if(firstClick){
+                    //Check if its the first click or the second click
+                    if(firstClick){
 
-                            gui.setMessage2("");
+                        gui.setMessage2("");
 
-                            if(board[row][col].isEmpty()){} //do nothing if clicked an empty spot
+                        if(board[row][col].isEmpty()){} //do nothing if clicked an empty spot
 
-                            //get a list of tiles that can be moved to, then set firstClick to false
-                            else {
-                                canMoveTo = cellsToTiles(board[row][col].getPiece().getLegalMoves());
+                        //get a list of tiles that can be moved to, then set firstClick to false
+                        else {
+                            canMoveTo = cellsToTiles(board[row][col].getPiece().getLegalMoves());
 
-                                if(!correctPieceClicked(isWhitesTurn(),selectedSquare)){
-                                    gui.setMessage2("Not your move!");
-                                    return;
-                                }
-
-                                checkPiece(selectedSquare);
-                                firstClick = false;
-                                tempTile = selectedSquare;
+                            if(!correctPieceClicked(isWhitesTurn(),selectedSquare)){
+                                gui.setMessage2("Not your move!");
+                                return;
                             }
-                        } else { //if not first click
-                            //See if this tile is contained in the list and move the piece
-                            if(canMoveTo.contains(selectedSquare)) {
-                                movePiece(tempTile, selectedSquare);
 
-                                gui.setMessage3("Click on any empty square for black's move");
-
-                                turnComplete();
-
-                            } else {
-                                System.out.println("Cant move here");
-                            }
-                            firstClick = true;
-                            tempTile = null;
+                            checkPiece(selectedSquare);
+                            firstClick = false;
+                            tempTile = selectedSquare;
                         }
+                    } else { //if not first click
+                        //See if this tile is contained in the list and move the piece
+                        if(canMoveTo.contains(selectedSquare)) {
+                            movePiece(tempTile, selectedSquare);
+
+                            gui.setMessage3("Click on any empty square for black's move");
+
+                            turnComplete();
+
+                        } else {
+                            System.out.println("Cant move here");
+                        }
+                        firstClick = true;
+                        tempTile = null;
                     }
                 });
             }
@@ -153,13 +148,12 @@ public class ViewController implements Serializable {
      * @return true if white's turn
      */
     private boolean isWhitesTurn(){
-        if(turn % 2 == 0)
-            return true;
-        return false;
+        return turn % 2 == 0;
     }
 
     /**
      * Confirms whether the correct side's piece was selected
+     * Should be white clicked and white's turn OR !whiteClicked and !white's turn
      * @param whiteTurn if its white's turn
      * @param tile the tile selected
      * @return whether the tile has a piece of appropriate color
@@ -169,10 +163,9 @@ public class ViewController implements Serializable {
         if(whiteTurn &&
             color == Piece.PieceColor.WHITE)
             return true;
-        if(!whiteTurn &&
-                color == Piece.PieceColor.BLACK)
-            return true;
-        return false;
+
+        return !whiteTurn &&
+                color == Piece.PieceColor.BLACK;
     }
 
     /**
@@ -191,9 +184,9 @@ public class ViewController implements Serializable {
      * Looks at board to see if a team is under check
      */
     private void checkForCheck() {
-        if(Board.check == true)
+        if(Board.check)
             gui.setMessage("Check!");
-        if(Board.checkmate == true){
+        if(Board.checkmate){
             gui.setMessage("Checkmate");
 
         }
@@ -256,7 +249,7 @@ public class ViewController implements Serializable {
     /**
      * Color a particular tile
      * //todo: appears to be useless method. Figure out a use for it
-     * @param tile
+     * @param tile the tile we want to highlight
      */
     private void highlight(Tile tile){
         tile.highlight();
@@ -269,7 +262,7 @@ public class ViewController implements Serializable {
      * @return list of legal moves in tile format
      */
     private ArrayList<Tile> cellsToTiles(ArrayList<Cell> legalMoves){
-        ArrayList<Tile> tiles = new ArrayList<Tile>();
+        ArrayList<Tile> tiles = new ArrayList<>();
         for(Cell cell : legalMoves){
             tiles.add(chessBoardSquares[cell.getRow()][cell.getColumn()]);
            // System.out.println(cell.getRow() + " " + cell.getColumn());

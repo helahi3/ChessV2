@@ -2,7 +2,6 @@ package Board;
 
 import Pieces.*;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +19,11 @@ public class Board {
     private static Cell[][] board;
     private static List<Piece> whitePieces = new ArrayList<Piece>();
     private static List<Piece> blackPieces = new ArrayList<Piece>();
-    public static Piece whiteKing;
+    private static Piece whiteKing;
     private static Piece blackKing;
     public static boolean check = false;
     public static boolean checkmate = false;
+
     public static boolean whiteCanCastle = true;
     public static boolean blackCanCastle = true;
 
@@ -78,10 +78,9 @@ public class Board {
         Piece temp = board[row][col].getPiece();
         if(temp == null)
             return false;
-        if(temp.getColor() == color)
-            return true;
 
-        return false;
+        return temp.getColor() == color;
+
     }
 
     /**
@@ -108,7 +107,7 @@ public class Board {
      * Initialize the pieces in the respective list of pieces
      * Marks a reference to the 2 kings
      */
-    public static void initPieces(){
+    private static void initPieces(){
         for(int i=0; i< board.length; i++){
             for(int j=0; j<board[i].length; j++){
 
@@ -139,14 +138,13 @@ public class Board {
      * @param color of the king we want
      * @return the relevant king
      */
-    public static Piece getKing(Piece.PieceColor color) {
+    private static Piece getKing(Piece.PieceColor color) {
         if(color == Piece.PieceColor.WHITE){
             return whiteKing;
         }
         else{
             return blackKing;
         }
-        //return null;//should be unreachable code. Figure out how to refactor it?
     }
 
     /**
@@ -222,9 +220,8 @@ public class Board {
      * @param sCol starting column
      * @param eRow ending row
      * @param eCol ending column
-     * @return if the piece was moved
      */
-    public static boolean movePiece(int sRow, int sCol, int eRow, int eCol){
+    public static void movePiece(int sRow, int sCol, int eRow, int eCol){
 
         Cell startCell = board[sRow][sCol];
         Cell endCell = board[eRow][eCol];
@@ -233,30 +230,28 @@ public class Board {
         Piece piece = startCell.getPiece();
         if(piece == null) {
             System.out.println("No piece there");
-            return false;
+            return;
         }
 
-        System.out.println("We are moving piece: " + piece.toString2());
 
         //Get a list of all legal moves for that piece
         //Return false if
         ArrayList<Cell> possibleMoves = piece.getLegalMoves();
         if(!possibleMoves.contains(endCell)) {
             System.out.println("cant move to that spot");
-            return false;
         }
         else {
 
 
 
             simpleMove(startCell, endCell);
-            if(piece.getHasMoved() == false)
+            if(!piece.getHasMoved())
                 piece.changeHasMoved();
 
             piece.setNewLocation(endCell);
 
             //if we are moving out of check, change flag
-            if(check == true)
+            if(check)
                 check = false;
 
             //if this piece is now threatening enemy king, flag check and look for checkmate
@@ -264,8 +259,6 @@ public class Board {
                 check = true;
                 isCheckmate(piece.getEnemyColor());
             }
-
-            return true;
         }
     }
 
@@ -278,7 +271,7 @@ public class Board {
      */
     //TODO: Complete function by changing class variables
     public static boolean canCastle(King king, Rook rook){
-        if(king.getHasMoved() == true || rook.getHasMoved() == true) {
+        if(king.getHasMoved() || rook.getHasMoved()) {
             if(king.getColor() == Piece.PieceColor.WHITE)
                 whiteCanCastle = false;
             else
@@ -311,7 +304,7 @@ public class Board {
         return true;
     }
 
-    public static ArrayList<Cell> cellsBetweenPieces(Piece p1, Piece p2){
+    private static ArrayList<Cell> cellsBetweenPieces(Piece p1, Piece p2){
         ArrayList<Cell> interCells = new ArrayList<Cell>();
 
         int row = p1.getRow(); int col = p1.getRow();
@@ -340,7 +333,7 @@ public class Board {
      * Remove the killed piece from the list of pieces
      * @param piece the piece being killed
      */
-    public static void killPiece(Piece piece){
+    private static void killPiece(Piece piece){
         if(piece == null) return;
         if(piece.getColor() == Piece.PieceColor.WHITE){
             whitePieces.remove(piece);
@@ -353,7 +346,7 @@ public class Board {
      * Replace a piece in the list. Mainly for undoing kills
      * @param piece the piece being added to the list
      */
-    public static void addPiece(Piece piece){
+    private static void addPiece(Piece piece){
         if(piece == null) return;
         if(piece.getColor() == Piece.PieceColor.WHITE){
             whitePieces.add(piece);
@@ -365,7 +358,7 @@ public class Board {
     //Check if input color has been checkmated
     //if any piece has at least 1 legal move, game over
     //maybe only call this method if check has been declared to avoid unnecessary calls
-    public static boolean isCheckmate(Piece.PieceColor color) {
+    private static boolean isCheckmate(Piece.PieceColor color) {
         List<Piece> friendlyPieces = whitePieces;
         if(color == Piece.PieceColor.BLACK)
             friendlyPieces = blackPieces;
@@ -433,7 +426,7 @@ public class Board {
 
     /**
      * toString method for testing purposes
-     * @return
+     * @return the board in string form
      */
     public String toString(){
         String result = "";

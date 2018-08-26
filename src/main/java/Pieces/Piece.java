@@ -19,14 +19,14 @@ public abstract class Piece {
      * The piece color is WHITE or BLACK
      */
     public enum PieceColor {
-        WHITE,BLACK;
+        WHITE,BLACK
     }
 
     /**
      * The 6 possible types of a piece
      */
     public enum PieceType {
-        KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN;
+        KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN
     }
 
     /**
@@ -115,19 +115,15 @@ public abstract class Piece {
     /**
      * checks if this piece is threatening the enemy king
      * @param enemyKing the king we are checking
-     * @return boolean
+     * @return true if threatening king
      */
     public boolean isThreateningEnemyKing(Piece enemyKing){
         Cell[][] board = Board.getBoard();
         Cell kingLocation = board[enemyKing.getRow()][enemyKing.getColumn()];
 
-        //todo
 
-        if(this.getPseudoLegalMoves().contains(kingLocation)) {
-            return true;
-        }
+        return this.getPseudoLegalMoves().contains(kingLocation);
 
-        return false;
     }
 
     //Given a list of pseudo-legal moves, check if they leave the king in check
@@ -161,8 +157,6 @@ public abstract class Piece {
             Board.undoMove(start, destination, killedPiece);
         }
 
-        System.out.println("this pieces location and PL moves: "+ toString3() + " " + pseudoLegalMoves);
-
         return legalMoves;
     }
 
@@ -178,7 +172,6 @@ public abstract class Piece {
     public static ArrayList<Cell> slidingPieceMoves(int row, int column, PieceColor color, int[][] offsetMultiplier){
         Cell[][] board = Board.getBoard();
         ArrayList<Cell> moves = new ArrayList<Cell>();
-        int x = row; int y= column;
         PieceColor enemyColor;
 
         if(color == WHITE)
@@ -195,22 +188,22 @@ public abstract class Piece {
 
 
             //Keep looping while (x,y) + offset is part of board
-            while(x + offsetX >= 0 && x + offsetX < board.length
-                    && y + offsetY >= 0 && y + offsetY < board.length) {
+            while(row + offsetX >= 0 && row + offsetX < board.length
+                    && column + offsetY >= 0 && column + offsetY < board.length) {
 
                 //If the cell is empty, add the move to the list and continue
-                if (Board.isCellEmpty(x + offsetX, y + offsetY)) {
-                    moves.add(board[x + offsetX][y + offsetY]);
+                if (Board.isCellEmpty(row + offsetX, column + offsetY)) {
+                    moves.add(board[row + offsetX][column + offsetY]);
                 }
 
                 //If the cell contains an enemy piece, add move (attack) to the list and break
-                if (Board.containsPieceOfColor(x + offsetX, y + offsetY, enemyColor)) {
-                    moves.add(board[x + offsetX][y + offsetY]);
+                if (Board.containsPieceOfColor(row + offsetX, column + offsetY, enemyColor)) {
+                    moves.add(board[row + offsetX][column + offsetY]);
                     break;
                 }
 
                 //If the cell contains a friendly piece, break
-                if (Board.containsPieceOfColor(x + offsetX, y + offsetY, color)) {
+                if (Board.containsPieceOfColor(row + offsetX, column + offsetY, color)) {
                     break;
                 }
 
@@ -242,16 +235,8 @@ public abstract class Piece {
      * @return First letter of piece type and first letter of piece color (PW, BR etc)
      */
     public String toString(){
-       // return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
-        return "" + this.color.toString().charAt(0) + this.type.toString().charAt(0);
-    }
-
-    public String toString2(){
-         return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
-    }
-
-    public String toString3(){
-        return "" + this.getRow() + " " + this.getColumn();
+        return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
+        //return "" + this.color.toString().charAt(0) + this.type.toString().charAt(0);
     }
 
 

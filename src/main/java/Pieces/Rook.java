@@ -1,8 +1,6 @@
 package Pieces;
 
-import Board.Board;
 import Board.Cell;
-import Board.Move;
 
 import java.util.ArrayList;
 
