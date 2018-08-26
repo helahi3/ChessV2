@@ -119,13 +119,12 @@ public abstract class Piece {
         Cell[][] board = Board.getBoard();
         Cell kingLocation = board[enemyKing.getRow()][enemyKing.getColumn()];
 
-        //kings cant threaten enemy kings
-        if(this.getType() == PieceType.KING)
-            return false;
+        //todo
 
         if(this.getPseudoLegalMoves().contains(kingLocation)) {
             return true;
         }
+
         return false;
     }
 
@@ -152,16 +151,15 @@ public abstract class Piece {
             Piece killedPiece = Board.simpleMove(start, destination);
 
 
-            if (!Board.kingInCheck(this.getColor())) {
 
+            if (!Board.kingInCheck(this.getColor())) {
                 legalMoves.add(destination);
             }
 
             Board.undoMove(start, destination, killedPiece);
         }
 
-        System.out.println("pl moves: " + pseudoLegalMoves);
-        System.out.println("legalmoves: " + legalMoves);
+        System.out.println("this pieces location and PL moves: "+ toString3() + " " + pseudoLegalMoves);
 
         return legalMoves;
     }
@@ -220,9 +218,6 @@ public abstract class Piece {
 
             }
         }
-
-
-
         return moves;
     }
 
@@ -241,7 +236,17 @@ public abstract class Piece {
      * @return First letter of piece type and first letter of piece color (PW, BR etc)
      */
     public String toString(){
-        return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
+       // return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
+        return "" + this.color.toString().charAt(0) + this.type.toString().charAt(0);
     }
+
+    public String toString2(){
+         return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
+    }
+
+    public String toString3(){
+        return "" + this.getRow() + " " + this.getColumn();
+    }
+
 
 }

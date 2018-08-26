@@ -22,9 +22,10 @@ public class Board {
     private static List<Piece> blackPieces = new ArrayList<Piece>();
     public static Piece whiteKing;
     private static Piece blackKing;
-    public static boolean check = true;
+    public static boolean check = false;
     public static boolean checkmate = false;
-
+    public static boolean whiteCanCastle = true;
+    public static boolean blackCanCastle = true;
 
     /**
      * Checks if the board has been initialized, then inits and returns it
@@ -140,18 +141,12 @@ public class Board {
      */
     public static Piece getKing(Piece.PieceColor color) {
         if(color == Piece.PieceColor.WHITE){
-            for(Piece piece : whitePieces){
-                if(piece.getType() == Piece.PieceType.KING)
-                    return piece;
-            }
+            return whiteKing;
         }
         else{
-            for(Piece piece : blackPieces){
-                if(piece.getType() == Piece.PieceType.KING)
-                    return piece;
-            }
+            return blackKing;
         }
-        return null;//should be unreachable code. Figure out how to refactor it?
+        //return null;//should be unreachable code. Figure out how to refactor it?
     }
 
     /**
@@ -161,6 +156,7 @@ public class Board {
      */
     public static boolean kingInCheck(Piece.PieceColor color) {
         Piece king = getKing(color);
+
 
 
         //loop through all enemy pieces, checking if they're threatening the enemy king
@@ -188,6 +184,7 @@ public class Board {
         Piece movingPiece = start.removePiece();
         Piece deadPiece = end.replacePiece(movingPiece);
         killPiece(deadPiece);
+        movingPiece.setNewLocation(end);
 
         return deadPiece;
     }
@@ -204,6 +201,7 @@ public class Board {
 
         end.replacePiece(killedPiece);
         addPiece(killedPiece);
+        movingPiece.setNewLocation(start);
     }
 
     /**
@@ -212,6 +210,7 @@ public class Board {
      */
     public static void setBoard(Piece[] pieces){
         for(Piece piece : pieces){
+
             board[piece.getRow()][piece.getColumn()].setPiece(piece);
         }
         initPieces();
@@ -237,6 +236,8 @@ public class Board {
             return false;
         }
 
+        System.out.println("We are moving piece: " + piece.toString2());
+
         //Get a list of all legal moves for that piece
         //Return false if
         ArrayList<Cell> possibleMoves = piece.getLegalMoves();
@@ -245,6 +246,9 @@ public class Board {
             return false;
         }
         else {
+
+
+
             simpleMove(startCell, endCell);
             if(piece.getHasMoved() == false)
                 piece.changeHasMoved();
@@ -262,6 +266,73 @@ public class Board {
 
             return true;
         }
+    }
+
+    /**
+     * Checks if a given King/Rook pair can castle
+     * In order to castle, neither piece must have moved and none of the spaces from king - rook can be threatened
+     * @param king
+     * @param rook
+     * @return if castling is legal
+     */
+    //TODO: Complete function by changing class variables
+    public static boolean canCastle(King king, Rook rook){
+        if(king.getHasMoved() == true || rook.getHasMoved() == true) {
+            if(king.getColor() == Piece.PieceColor.WHITE)
+                whiteCanCastle = false;
+            else
+                blackCanCastle = false;
+            return false;
+        }
+
+        //todo/ blegh
+        List<Piece> pieces;
+        if(king.getColor() == Piece.PieceColor.WHITE)
+            pieces = blackPieces;
+        else
+            pieces = whitePieces;
+
+
+        ArrayList<Cell> interCells = cellsBetweenPieces(king, rook);
+
+        //Loop through all enemy pieces and get PL moves
+        //Loop through all cells in between rook adn king
+        //Return false if any of them are threatened
+        for(Piece piece : pieces){
+            List<Cell> plMoves = piece.getPseudoLegalMoves();
+            for(int i=0; i<interCells.size(); i++){
+                if(plMoves.contains(interCells.get(i))){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public static ArrayList<Cell> cellsBetweenPieces(Piece p1, Piece p2){
+        ArrayList<Cell> interCells = new ArrayList<Cell>();
+
+        int row = p1.getRow(); int col = p1.getRow();
+
+        //If we are castling king side, then the king's column will be less than the rook's column
+        int kingSide;
+        if(p1.getColumn() < p2.getColumn())
+            kingSide = 1;
+        else
+            kingSide = -1;
+
+
+        //Get the absolute difference of piece columns
+        int columnDifference = Math.abs(p1.getColumn() - p2.getColumn());
+
+
+        for(int i=0; i<columnDifference; i++){
+            int tempColumn = kingSide * col * i;
+            interCells.add(board[row][tempColumn]);
+        }
+
+        return interCells;
     }
 
     /**

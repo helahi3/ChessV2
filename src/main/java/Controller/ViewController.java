@@ -87,10 +87,10 @@ public class ViewController implements Serializable {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
-                        if(!isWhitesTurn()) {
-                            gui.setMessage3("");
-                            doBlacksTurn();
-                        }
+//                        if(!isWhitesTurn()) {
+//                            gui.setMessage3("");
+//                            doBlacksTurn();
+//                        }
                         //Get the selected square and its attributes
                         Tile selectedSquare = (Tile) e.getSource();
                         int row = selectedSquare.getRow(), col = selectedSquare.getCol();
