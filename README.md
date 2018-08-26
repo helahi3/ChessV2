@@ -23,4 +23,3 @@ Start working on en passant
 
 
 Note: The app is still in development, but feel free to test it out 
-(/out/artifacts/chess_v2_jar/chess_v2.jar)
