@@ -11,11 +11,13 @@ import java.util.ArrayList;
  * Implements abstract method (PL moves)
  */
 public class Rook extends Piece {
+
+
     /**
      * Constructor that sets piece type to be rook
      */
     public Rook(int row, int column, PieceColor color) {
-        super(row, column, color, PieceType.ROOK);
+        super(row, column, color, PieceType.ROOK,5);
     }
 
     /**

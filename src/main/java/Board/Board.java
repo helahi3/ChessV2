@@ -259,10 +259,11 @@ public class Board {
             if(check == true)
                 check = false;
 
-            //if this piece is now threatening enemy king, make flag check
-            if(piece.isThreateningEnemyKing(getKing(piece.getEnemyColor())))
+            //if this piece is now threatening enemy king, flag check and look for checkmate
+            if(piece.isThreateningEnemyKing(getKing(piece.getEnemyColor()))) {
                 check = true;
-
+                isCheckmate(piece.getEnemyColor());
+            }
 
             return true;
         }
@@ -359,6 +360,25 @@ public class Board {
         } else {
             blackPieces.add(piece);
         }
+    }
+
+    //Check if input color has been checkmated
+    //if any piece has at least 1 legal move, game over
+    //maybe only call this method if check has been declared to avoid unnecessary calls
+    public static boolean isCheckmate(Piece.PieceColor color) {
+        List<Piece> friendlyPieces = whitePieces;
+        if(color == Piece.PieceColor.BLACK)
+            friendlyPieces = blackPieces;
+
+        //Loop through all friendly pieces
+        //if any of them has at least 1 legal move, return false;
+        for(Piece piece : friendlyPieces){
+            if(piece.getLegalMoves().size() > 0)
+                return false;
+        }
+        checkmate = true;
+
+        return true;
     }
 
     public static void initializeGame(){

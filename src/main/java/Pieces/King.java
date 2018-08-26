@@ -9,8 +9,9 @@ import java.util.List;
 
 public class King extends Piece {
 
+
     public King(int row, int column, PieceColor color) {
-        super(row, column, color, PieceType.KING);
+        super(row, column, color, PieceType.KING,100);
     }
 
     /**
@@ -45,28 +46,6 @@ public class King extends Piece {
         return moves;
     }
 
-    @Override
-    public ArrayList<Cell> getLegalMoves(){
-        ArrayList<Cell> legalMoves = new ArrayList<Cell>();
-        ArrayList<Cell> plMoves = getPseudoLegalMoves();
-        Cell[][] board = Board.getBoard();
-        Cell start = board[getRow()][getColumn()];
-
-
-        for(Cell destination : plMoves) {
-            Piece killedPiece = Board.simpleMove(start,destination);
-
-            if(!isInCheck())
-                legalMoves.add(destination);
-
-            Board.undoMove(start,destination,killedPiece);
-        }
-
-        System.out.println("King's pk moves: " + plMoves);
-        System.out.println("Kings legal moves: " + legalMoves);
-
-        return legalMoves;
-    }
 
     public boolean isInCheck(){
         List<Piece> enemyPieces = Board.getWhitePieces();
@@ -87,18 +66,3 @@ public class King extends Piece {
     }
 
 }
-
-/*
-        for (Cell destination : pseudoLegalMoves) {
-            Piece killedPiece = Board.simpleMove(start, destination);
-
-
-
-            if (!Board.kingInCheck(this.getColor())) {
-                legalMoves.add(destination);
-            }
-
-            Board.undoMove(start, destination, killedPiece);
-        }
-
- */

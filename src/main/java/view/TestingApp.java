@@ -20,7 +20,7 @@ public class TestingApp {
     public static void main(String[] args){
         gui = new GUI();
         vc = new ViewController(gui);
-        ec = new EngineController(gui);
+        ec = new EngineController();
 
 
         JFrame f = new JFrame("Java Chess");

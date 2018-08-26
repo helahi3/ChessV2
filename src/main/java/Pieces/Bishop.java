@@ -15,7 +15,7 @@ public class Bishop extends Piece {
      * Constructor that sets piece type as BISHOP
      */
     public Bishop(int row, int column, PieceColor color) {
-        super(row, column, color, PieceType.BISHOP);
+        super(row, column, color, PieceType.BISHOP,3);
     }
 
     /**

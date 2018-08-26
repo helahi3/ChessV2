@@ -11,11 +11,12 @@ import java.util.ArrayList;
 public class Pawn extends Piece {
 
 
+
     /**
      * Constructor that sets piece type to be Pawn
      */
     public Pawn(int row, int column, PieceColor color) {
-        super(row, column, color, PieceType.PAWN);
+        super(row, column, color, PieceType.PAWN,1);
     }
 
     /**

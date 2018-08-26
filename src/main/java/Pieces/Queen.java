@@ -11,11 +11,12 @@ import java.util.ArrayList;
  */
 public class Queen extends Piece {
 
+
     /**
      * Constructor that sets the piece type to queen
      */
     public Queen(int row, int column, PieceColor color) {
-        super(row, column, color, PieceType.QUEEN);
+        super(row, column, color, PieceType.QUEEN,9);
     }
 
     /**

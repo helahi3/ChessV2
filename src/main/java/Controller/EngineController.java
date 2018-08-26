@@ -1,26 +1,31 @@
 package Controller;
 
 import Player.ChessEngine;
-import view.GUI;
-import view.Tile;
 
+/**
+ * Engine controller that interacts with the ViewController and the ChessEngine
+ */
 public class EngineController {
 
-    private GUI gui;
-    private Tile[][] chessBoardSquares;
+    /**
+     * private fields
+     */
     private static ChessEngine engine;
 
 
-
-    public EngineController(GUI gui) {
-        this.gui = gui;
-        chessBoardSquares = gui.getChessBoardSquares();
+    /**
+     * Constructor that initializes the chess engine
+     */
+    public EngineController() {
         engine = new ChessEngine();
     }
 
+    /**
+     * Gets the move from the engine and returns it
+     * @return int[] that contains starting and ending coordinates of move
+     */
     public static int[] move(){
-        int[] moves = engine.play();
-        return moves;
+        return engine.play();
     }
 
 }

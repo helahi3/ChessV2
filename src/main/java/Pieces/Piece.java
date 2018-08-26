@@ -36,6 +36,7 @@ public abstract class Piece {
     private PieceType type;
     private PieceColor color;
     boolean hasMoved;
+    private int VALUE;
 
     /**
      * Constructor for creating a piece
@@ -44,12 +45,13 @@ public abstract class Piece {
      * @param color the color
      * @param type the type
      */
-    public Piece(int row, int column, PieceColor color, PieceType type){
+    public Piece(int row, int column, PieceColor color, PieceType type, int value){
         this.row = row;
         this.column = column;
         this.color = color;
         this.type = type;
         hasMoved = false;
+        VALUE = value;
     }
 
     /**
@@ -229,6 +231,10 @@ public abstract class Piece {
         if(this.color == WHITE)
             return PieceColor.BLACK;
         return WHITE;
+    }
+
+    public int getVALUE() {
+        return VALUE;
     }
 
     /**

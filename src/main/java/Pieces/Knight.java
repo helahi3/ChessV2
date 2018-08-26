@@ -10,11 +10,12 @@ import java.util.ArrayList;
  */
 public class Knight extends Piece {
 
+
     /**
      * Constructor that sets piece type to be KNIGHT
      */
     public Knight(int row, int column, PieceColor color) {
-        super(row, column, color, PieceType.KNIGHT);
+        super(row, column, color, PieceType.KNIGHT,3);
     }
 
     /**

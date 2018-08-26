@@ -194,6 +194,16 @@ public class GUI {
         return chessBoardSquares;
     }
 
+    //todo
+    public void gameOver(int winner){
+        if(winner == 0){
+            JOptionPane pane = new JOptionPane("Game over. White wins!");
+
+        } else {
+            JOptionPane pane = new JOptionPane("Game over. Black wins!");
+        }
+    }
+
     /**
      * Initializes the icons of the initial chess board piece places
      */
