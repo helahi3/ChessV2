@@ -1,8 +1,12 @@
 import Board.*;
 import Pieces.*;
-import com.sun.deploy.util.BlackList;
 
 import java.util.Scanner;
+
+
+/**
+ * This is only for testing on the console. Ignore this class
+ */
 
 public class Chess {
 

@@ -1,7 +1,6 @@
-package view;
-
 import Controller.EngineController;
 import Controller.ViewController;
+import view.GUI;
 
 import javax.swing.*;
 
