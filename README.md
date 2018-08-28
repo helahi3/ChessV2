@@ -3,6 +3,10 @@ Chess Game on Java
 Uses a 2D array of Cells to represent the board
 Java Swing was used to implement the GUI
 
+
+You can try the app out by navigating to /out/artifacts/ChessApp/chess_v2.jar
+
+
 Currently supports 2 player version and against the computer.
 Players can only play as White against the computer.
 Screenshots of the game are available in the /screenshots folder.
