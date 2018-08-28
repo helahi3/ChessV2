@@ -6,35 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment=" .">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ChessApp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/chess_v2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Pieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Pieces/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player/ChessEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player/ChessEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Board/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Board/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Board/Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Chess.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Chess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Pieces/Pawn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Pieces/Pawn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Pieces/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Pieces/Piece.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
-    </list>
+    <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -356,7 +328,7 @@
       <workItem from="1535444204807" duration="1647000" />
       <workItem from="1535451961307" duration="1559000" />
       <workItem from="1535455388298" duration="1019000" />
-      <workItem from="1535477355616" duration="1463000" />
+      <workItem from="1535477355616" duration="1538000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1534418034123</created>
@@ -470,11 +442,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535281063836</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="next iteration of ai, added runnable">
+      <created>1535479047289</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1535479047289</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111279000" />
+    <option name="totallyTimeSpent" value="111354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -490,7 +469,7 @@
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.010256411" />
-      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.27307692" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.27307692" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32948717" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
@@ -538,7 +517,8 @@
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Code cleanup and minor refactoring" />
     <MESSAGE value=" ." />
-    <option name="LAST_COMMIT_MESSAGE" value=" ." />
+    <MESSAGE value="next iteration of ai, added runnable" />
+    <option name="LAST_COMMIT_MESSAGE" value="next iteration of ai, added runnable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
