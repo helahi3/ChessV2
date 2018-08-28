@@ -29,7 +29,7 @@ public class GUI {
     private JToolBar tools;
 
 
-    GUI() {
+    public GUI() {
         initializeGui();
     }
 
@@ -160,19 +160,37 @@ public class GUI {
     private final void createImages() {
 
         try {
-            chessPieceImages[0][0] = ImageIO.read(new File("images/bking.png"));
-            chessPieceImages[0][1] = ImageIO.read(new File("images/bqueen.png"));
-            chessPieceImages[0][2] = ImageIO.read(new File("images/brook.png"));
-            chessPieceImages[0][3] = ImageIO.read(new File("images/bknight.png"));
-            chessPieceImages[0][4] = ImageIO.read(new File("images/bbishop.png"));
-            chessPieceImages[0][5] = ImageIO.read(new File("images/bpawn.png"));
 
-            chessPieceImages[1][0] = ImageIO.read(new File("images/wking.png"));
-            chessPieceImages[1][1] = ImageIO.read(new File("images/wqueen.png"));
-            chessPieceImages[1][2] = ImageIO.read(new File("images/wrook.png"));
-            chessPieceImages[1][3] = ImageIO.read(new File("images/wknight.png"));
-            chessPieceImages[1][4] = ImageIO.read(new File("images/wbishop.png"));
-            chessPieceImages[1][5] = ImageIO.read(new File("images/wpawn.png"));
+
+            chessPieceImages[0][0] = ImageIO.read(getClass().getResource("/bking.png"));
+            chessPieceImages[0][1] = ImageIO.read(getClass().getResource("/bqueen.png"));
+            chessPieceImages[0][2] = ImageIO.read(getClass().getResource("/brook.png"));
+            chessPieceImages[0][3] = ImageIO.read(getClass().getResource("/bknight.png"));
+            chessPieceImages[0][4] = ImageIO.read(getClass().getResource("/bbishop.png"));
+            chessPieceImages[0][5] = ImageIO.read(getClass().getResource("/bpawn.png"));
+
+            chessPieceImages[1][0] = ImageIO.read(getClass().getResource("/wking.png"));
+            chessPieceImages[1][1] = ImageIO.read(getClass().getResource("/wqueen.png"));
+            chessPieceImages[1][2] = ImageIO.read(getClass().getResource("/wrook.png"));
+            chessPieceImages[1][3] = ImageIO.read(getClass().getResource("/wknight.png"));
+            chessPieceImages[1][4] = ImageIO.read(getClass().getResource("/wbishop.png"));
+            chessPieceImages[1][5] = ImageIO.read(getClass().getResource("/wpawn.png"));
+
+
+
+//            chessPieceImages[0][0] = ImageIO.read(new File("images/bking.png"));
+//            chessPieceImages[0][1] = ImageIO.read(new File("images/bqueen.png"));
+//            chessPieceImages[0][2] = ImageIO.read(new File("images/brook.png"));
+//            chessPieceImages[0][3] = ImageIO.read(new File("images/bknight.png"));
+//            chessPieceImages[0][4] = ImageIO.read(new File("images/bbishop.png"));
+//            chessPieceImages[0][5] = ImageIO.read(new File("images/bpawn.png"));
+//
+//            chessPieceImages[1][0] = ImageIO.read(new File("images/wking.png"));
+//            chessPieceImages[1][1] = ImageIO.read(new File("images/wqueen.png"));
+//            chessPieceImages[1][2] = ImageIO.read(new File("images/wrook.png"));
+//            chessPieceImages[1][3] = ImageIO.read(new File("images/wknight.png"));
+//            chessPieceImages[1][4] = ImageIO.read(new File("images/wbishop.png"));
+//            chessPieceImages[1][5] = ImageIO.read(new File("images/wpawn.png"));
 
         } catch (Exception e){
             e.printStackTrace();
@@ -189,6 +207,10 @@ public class GUI {
 
     public void setMessage3(String msg) { message3.setText(msg); }
 
+    public void getPromotionType(){
+        JOptionPane pane = new JOptionPane();
+       // pane.se
+    }
 
     public Tile[][] getChessBoardSquares() {
         return chessBoardSquares;
@@ -197,7 +219,7 @@ public class GUI {
     //todo
     public void gameOver(int winner){
         if(winner == 0){
-            JOptionPane pane = new JOptionPane("Game over. White wins!");
+            JOptionPane.showMessageDialog(null, "Game over white wins", "InfoBox: " + "Check Mate", JOptionPane.INFORMATION_MESSAGE);
 
         } else {
             JOptionPane pane = new JOptionPane("Game over. Black wins!");

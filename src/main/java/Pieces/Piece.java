@@ -1,6 +1,6 @@
 package Pieces;
 
-import Board.Board;
+import Board.*;
 import Board.Cell;
 
 import java.util.ArrayList;
@@ -82,9 +82,14 @@ public abstract class Piece {
      * Getter for piece type
      * @return the type
      */
-    public PieceType getType() {
+    public PieceType getType() { return type; }
 
-        return type;
+    /**
+     * Get the piece's location in Cell form
+     * @return the Cell
+     */
+    private Cell getLocation() {
+        return Board.getBoard()[row][column];
     }
 
     /**
@@ -160,6 +165,21 @@ public abstract class Piece {
         return legalMoves;
     }
 
+    /**
+     * Converts legalMoves from Cell objects to Move objects
+     * @return
+     */
+    public ArrayList<Move> getMoves() {
+        ArrayList<Cell> legalMoves = getLegalMoves();
+        ArrayList<Move> moves = new ArrayList<Move>();
+
+        for(Cell cell : legalMoves){
+            moves.add(new Move(getLocation(),cell));
+        }
+
+        return moves;
+    }
+
 
     /**
      * Checks the movement of Sliding pieces (Queen, Bishop, Rook), using an offset multiplier to indicate directions
@@ -214,6 +234,14 @@ public abstract class Piece {
             }
         }
         return moves;
+    }
+
+    /**
+     * Promotes a pawn to the input type
+     * @param type
+     */
+    void promotePiece(PieceType type){
+        this.type = type;
     }
 
     /**

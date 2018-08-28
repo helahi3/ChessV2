@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="ChessApp">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChessApp</output-path>
+    <root id="root">
+      <element id="archive" name="chess_v2.jar">
+        <element id="module-output" name="chess_v2" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/images" />
+    </root>
+  </artifact>
+</component>

@@ -188,7 +188,7 @@ public class ViewController implements Serializable {
             gui.setMessage("Check!");
         if(Board.checkmate){
             gui.setMessage("Checkmate");
-
+            gui.gameOver(turn %2);
         }
     }
 

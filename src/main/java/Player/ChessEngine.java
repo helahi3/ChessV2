@@ -5,26 +5,90 @@ import Board.Cell;
 import Pieces.Piece;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ChessEngine {
 
     /**
-     * Modify this method to select which AI to use (playEngine1 etc.)
+     * Modify this method to select which AI to use (playEngine1, playEngine2 etc.)
      * @return move coordinates
      */
     public int[] play(){
-        return playEngine2();
+        return playEngine3(Piece.PieceColor.BLACK);
     }
 
+
+    /*
+    Minmax (MM) logic:
+
+    1) Do a move and evaluate score
+    2) See opponents best response move (using playEngine2?)
+    3) Evaluate our score at that point
+
+    Repeat steps for all legal moves
+    Do move with highest score in 3)
+
+    Bonus: Introduce depth, so opponent also runs MM, then we run MM on opponents moves
+
+     */
+
+
+
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////    /////////////////////
-    ///////////     //////////
+    /////////////////////// THIS AI WILL IMPLEMENT THE MINIMAX THEOREM ///////////////////////
+    /////////// 'MINIMAX' WORKS BY MINIMIZING THE OPPONENTS MAXIMUM RESPONSE MOVE ////////////
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
 
 
+    /**
+     * Will loop through all moves, Given opponent's best response of Engine2, it selects our best move
+     * @param color
+     * @return
+     */
+    private int[] playEngine3(Piece.PieceColor color){
+        List<Piece> pieces = getPieces(color);
+
+        Move move = implementMM(pieces);
+
+        //Return random move if null
+        if(move == null){
+            return playEngine1();
+        }
+
+        return moveToInt(move);
+    }
+
+    private Move implementMM(List<Piece> pieces){
+
+        List<Move> moves = getAllLegalMoves(pieces);
+        int bestScore = -1;
+        Move flaggedMove = null;
+
+
+        for(Move move : moves){
+
+            int currentScore = move.getScore();
+            Board.makeMove(move);
+
+            //Get best move that opponent will do given this move
+            //Subtract score of opponents move
+            Move oppMove = intArrToMove(playEngine2(pieces.get(0).getEnemyColor()));
+            currentScore = currentScore - oppMove.getScore();
+
+            if(currentScore > bestScore){
+                flaggedMove = move;
+                bestScore = currentScore;
+            }
+
+            Board.undoMove(move);
+        }
+
+
+        return flaggedMove;
+    }
 
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -39,9 +103,8 @@ public class ChessEngine {
      * Will always kill a piece if possible
      * @return coordinates of move
      */
-    private int[] playEngine2() {
-        ArrayList<Cell> moves;
-        List<Piece> pieces = getPieces(Piece.PieceColor.BLACK);
+    private int[] playEngine2(Piece.PieceColor color) {
+        List<Piece> pieces = getPieces(color);
 
         Piece pieceToMove = null;
         int score = 0;
@@ -71,6 +134,29 @@ public class ChessEngine {
 
 
         return doMove(pieceToMove,destination);
+    }
+
+    /**
+     * Given a list of moves, gets the move which kills the best piece
+     * @param moves list of moves
+     * @return Move object that contains the destination and the score
+     */
+    private Move killBestPieceMove(List<Cell> moves){
+        int score = 0;
+        Cell tempDestination = null;
+
+        for(Cell destination : moves){
+            if(destination.getPiece() == null) continue;
+
+            if(destination.getPiece().getVALUE() > score){
+                score = destination.getPiece().getVALUE();
+                tempDestination = destination;
+            }
+        }
+
+        if(score == 0) return null;
+
+        return new Move(tempDestination,score);
     }
 
 
@@ -138,6 +224,22 @@ public class ChessEngine {
     }
 
     /**
+     * Gets all legal moves from all pieces
+     * @param pieces list of pieces
+     * @return list of Moves
+     */
+    private List<Move> getAllLegalMoves(List<Piece> pieces){
+        List<Move> moves = new LinkedList<Move>();
+
+        for(Piece piece : pieces){
+            moves.addAll(piece.getMoves());
+        }
+
+        return moves;
+    }
+
+
+    /**
      * Return pieces of a give color
      * @param color color of pieces we want
      * @return piece list
@@ -149,29 +251,24 @@ public class ChessEngine {
             return Board.getBlackPieces();
     }
 
-
     /**
-     * Given a list of moves, gets the move which kills the best piece
-     * @param moves list of moves
-     * @return Move object that contains the destination and the score
+     * Converts move coordinates to move object
+     * @param move
+     * @return
      */
-    private Move killBestPieceMove(List<Cell> moves){
-        int score = 0;
-        Cell tempDestination = null;
+    private static Move intArrToMove(int[] move){
+        int startX = move[0], startY = move[1], endX = move[2], endY = move[3];
+        Cell[][] board = Board.getBoard();
 
-        for(Cell destination : moves){
-            if(destination.getPiece() == null) continue;
-
-            if(destination.getPiece().getVALUE() > score){
-                score = destination.getPiece().getVALUE();
-                tempDestination = destination;
-            }
-        }
-
-        if(score == 0) return null;
-
-        return new Move(tempDestination,score);
+        return new Move(board[startX][startY],board[endX][endY]);
     }
+
+
+    private static int[] moveToInt(Move move){
+        return new int[]{move.getStart().getRow(),move.getStart().getColumn(), move.getEnd().getRow(), move.getEnd().getColumn()};
+    }
+
+
 
 
 }

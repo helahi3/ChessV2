@@ -31,6 +31,9 @@ public class Pawn extends Piece {
         //Black starts at top of the board
         if(this.getColor() == PieceColor.BLACK){
 
+            if(getRow() == 7)
+                promotePiece(getPromotionType());
+
             if(Board.isCellEmpty(this.getRow() + 1, this.getColumn())){ //Check if the next spot is empty
                 moves.add(board[getRow() + 1][getColumn()]); //then add it
 
@@ -88,9 +91,13 @@ public class Pawn extends Piece {
                 moves.add(board[getRow() - 1][getColumn() - 1]);
             }
         }
-
-
         return moves;
     }
+
+
+    public PieceType getPromotionType(){
+        return PieceType.QUEEN;
+    }
+
 
 }

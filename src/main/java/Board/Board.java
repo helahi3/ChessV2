@@ -236,6 +236,7 @@ public class Board {
 
         //Get a list of all legal moves for that piece
         //Return false if
+        //todo: possibly redundant if section
         ArrayList<Cell> possibleMoves = piece.getLegalMoves();
         if(!possibleMoves.contains(endCell)) {
             System.out.println("cant move to that spot");
@@ -261,6 +262,27 @@ public class Board {
             }
         }
     }
+
+    /**
+     * Make a move and return the piece killed
+     * Only for evaluation by ChessEngine
+     * @param move the move made
+     */
+    public static void makeMove(Move move){
+        Cell start = move.getStart();
+        Cell end = move.getEnd();
+        simpleMove(start,end);
+    }
+
+    /**
+     * Undo makeMove
+     * Only for evaluation
+     * @param move the mode undone
+     */
+    public static void undoMove(Move move){
+        undoMove(move.getStart(),move.getEnd(),move.getPieceCaptured());
+    }
+
 
     /**
      * Checks if a given King/Rook pair can castle
