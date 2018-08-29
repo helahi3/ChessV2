@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Player/Player.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/Controller/EngineController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/Controller/ViewController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/Player/ChessEngine.class" afterDir="false" />
@@ -30,9 +29,6 @@
       <change afterPath="$PROJECT_DIR$/target/classes/wqueen.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/wrook.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Tile.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -74,8 +70,8 @@
       <file leaf-file-name="Tile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+            <state relative-caret-position="313">
+              <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -374,7 +370,7 @@
       <workItem from="1535477355616" duration="1538000" />
       <workItem from="1535479129107" duration="267000" />
       <workItem from="1535479635660" duration="380000" />
-      <workItem from="1535537908695" duration="773000" />
+      <workItem from="1535537908695" duration="1063000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1534418034123</created>
@@ -509,11 +505,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535479841539</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Highlight the legal moves of a piece when it is selected">
+      <created>1535538964717</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1535538964717</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112774000" />
+    <option name="totallyTimeSpent" value="113064000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -535,6 +538,7 @@
       <window_info id="Designer" order="0" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.26466382" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.19358975" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="1" />
@@ -546,7 +550,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.19358975" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +583,8 @@
     <MESSAGE value="next iteration of ai, added runnable" />
     <MESSAGE value="." />
     <MESSAGE value="Runnable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Runnable" />
+    <MESSAGE value="Highlight the legal moves of a piece when it is selected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Highlight the legal moves of a piece when it is selected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -911,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+        <state relative-caret-position="313">
+          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
         </state>
       </provider>
     </entry>
