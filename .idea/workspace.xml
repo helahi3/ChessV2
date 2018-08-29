@@ -6,7 +6,34 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="" />
+    <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Player/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Controller/EngineController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Controller/ViewController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Player/ChessEngine.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/Player/Player.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/TestingApp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bbishop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bking.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bknight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bpawn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/bqueen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/brook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/view/GUI$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/view/GUI$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/view/GUI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/view/Tile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wbishop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wking.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wknight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wpawn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wqueen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/wrook.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Tile.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +52,7 @@
       <file leaf-file-name="ChessEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Player/ChessEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="465">
               <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
             </state>
           </provider>
@@ -34,17 +61,30 @@
       <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2763">
-              <caret line="55" column="20" selection-start-line="55" selection-end-line="56" />
+            <state relative-caret-position="401">
+              <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
+              <folding>
+                <element signature="e#7766#7767#0" expanded="true" />
+                <element signature="e#7798#7799#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tile.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/view/Tile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+            <state relative-caret-position="684">
+              <caret line="178" selection-start-line="178" selection-end-line="178" />
             </state>
           </provider>
         </entry>
@@ -125,18 +165,18 @@
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Queen.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Rook.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/King.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/Tile.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/TestingApp.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/Chess.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Piece.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Pawn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Board/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/Board/Move.java" />
         <option value="$PROJECT_DIR$/src/main/java/Player/ChessEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/view/GUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/Tile.java" />
       </list>
     </option>
   </component>
@@ -189,25 +229,28 @@
             <path>
               <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ChessApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -329,6 +372,9 @@
       <workItem from="1535451961307" duration="1559000" />
       <workItem from="1535455388298" duration="1019000" />
       <workItem from="1535477355616" duration="1538000" />
+      <workItem from="1535479129107" duration="267000" />
+      <workItem from="1535479635660" duration="380000" />
+      <workItem from="1535537908695" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1534418034123</created>
@@ -449,11 +495,25 @@
       <option name="project" value="LOCAL" />
       <updated>1535479047289</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary=".">
+      <created>1535479359115</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1535479359115</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Runnable">
+      <created>1535479841539</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1535479841539</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111354000" />
+    <option name="totallyTimeSpent" value="112774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -469,13 +529,12 @@
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.010256411" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.27307692" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.27307692" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32948717" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2539342" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.26466382" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.19358975" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="1" />
@@ -487,6 +546,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.19358975" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +578,9 @@
     <MESSAGE value="Code cleanup and minor refactoring" />
     <MESSAGE value=" ." />
     <MESSAGE value="next iteration of ai, added runnable" />
-    <option name="LAST_COMMIT_MESSAGE" value="next iteration of ai, added runnable" />
+    <MESSAGE value="." />
+    <MESSAGE value="Runnable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Runnable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -749,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Chess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -831,22 +886,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Player/ChessEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="465">
           <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2763">
-          <caret line="55" column="20" selection-start-line="55" selection-end-line="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/view/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
+        <state relative-caret-position="684">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
+          <folding>
+            <element signature="e#7766#7767#0" expanded="true" />
+            <element signature="e#7798#7799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -909,6 +975,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

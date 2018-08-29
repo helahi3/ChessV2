@@ -9,6 +9,7 @@ import view.Tile;
 import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import static view.GUI.*;
 
@@ -108,6 +109,9 @@ public class ViewController implements Serializable {
                             }
 
                             checkPiece(selectedSquare);
+
+                            highlight(canMoveTo);
+
                             firstClick = false;
                             tempTile = selectedSquare;
                         }
@@ -123,6 +127,9 @@ public class ViewController implements Serializable {
                         } else {
                             System.out.println("Cant move here");
                         }
+
+                        unhighlight(canMoveTo);
+
                         firstClick = true;
                         tempTile = null;
                     }
@@ -253,8 +260,24 @@ public class ViewController implements Serializable {
      */
     private void highlight(Tile tile){
         tile.highlight();
-
     }
+
+    /**
+     * Color a list of tiles
+     * @param tiles
+     */
+    private void highlight(List<Tile> tiles){
+        for(Tile tile : tiles){
+            highlight(tile);
+        }
+    }
+
+    private void unhighlight(List<Tile> tiles){
+        for(Tile tile : tiles){
+            tile.unhighlight();
+        }
+    }
+
 
     /**
      * Converts a List of legal moves in Cell form to Tile objects

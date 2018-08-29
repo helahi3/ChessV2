@@ -9,13 +9,14 @@ import java.awt.*;
 public class Tile extends JButton {
 
     private int row, col;
-    private boolean isSelected = false;
-    private Color defaultColor;
+    private Color defaultForeground;
+    private Color defaultBackground;
 
     Tile(int row, int col) {
         this.row = row;
         this.col = col;
-        defaultColor = this.getForeground();
+        defaultForeground = this.getForeground();
+        defaultBackground = this.getBackground();
 
     }
 
@@ -36,15 +37,16 @@ public class Tile extends JButton {
     }
 
     public void highlight(){
-        if(!isSelected) {
-            this.setForeground(Color.ORANGE);
-            isSelected = true;
-        } else {
-            this.setForeground(defaultColor);
-            isSelected = false;
-        }
-       // this.setBackground(Color.ORANGE);
+            this.setForeground(Color.YELLOW);
+            this.setBackground(Color.YELLOW);
+
     }
+
+    public void unhighlight(){
+        this.setForeground(defaultForeground);
+        this.setBackground(defaultBackground);
+    }
+
 
     public Piece getPiece(){
         Cell[][] board = Board.getBoard();
@@ -53,9 +55,6 @@ public class Tile extends JButton {
 
     @Override
     protected void paintComponent(Graphics g) {
-//        if (getModel().isSelected()) {
-//            g.setColor(backgroundColor);
-//        }
         g.fillRect(0, 0, getWidth(), getHeight());
         super.paintComponent(g);
     }

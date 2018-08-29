@@ -177,21 +177,6 @@ public class GUI {
             chessPieceImages[1][5] = ImageIO.read(getClass().getResource("/wpawn.png"));
 
 
-
-//            chessPieceImages[0][0] = ImageIO.read(new File("images/bking.png"));
-//            chessPieceImages[0][1] = ImageIO.read(new File("images/bqueen.png"));
-//            chessPieceImages[0][2] = ImageIO.read(new File("images/brook.png"));
-//            chessPieceImages[0][3] = ImageIO.read(new File("images/bknight.png"));
-//            chessPieceImages[0][4] = ImageIO.read(new File("images/bbishop.png"));
-//            chessPieceImages[0][5] = ImageIO.read(new File("images/bpawn.png"));
-//
-//            chessPieceImages[1][0] = ImageIO.read(new File("images/wking.png"));
-//            chessPieceImages[1][1] = ImageIO.read(new File("images/wqueen.png"));
-//            chessPieceImages[1][2] = ImageIO.read(new File("images/wrook.png"));
-//            chessPieceImages[1][3] = ImageIO.read(new File("images/wknight.png"));
-//            chessPieceImages[1][4] = ImageIO.read(new File("images/wbishop.png"));
-//            chessPieceImages[1][5] = ImageIO.read(new File("images/wpawn.png"));
-
         } catch (Exception e){
             e.printStackTrace();
         }
