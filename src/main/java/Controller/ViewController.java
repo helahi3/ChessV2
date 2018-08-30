@@ -52,9 +52,11 @@ public class ViewController implements Serializable {
      */
     private void doBlacksTurn() {
         //Get the move coordinates
-        int[] move = EngineController.move();
+        Move move = EngineController.move();
 
-        int startX = move[0], startY = move[1], endX = move[2], endY = move[3];
+        //int startX = move[0], startY = move[1], endX = move[2], endY = move[3];
+        int startX = move.getStart().getRow(), startY = move.getStart().getColumn();
+        int endX = move.getEnd().getRow(), endY = move.getEnd().getColumn();
 
         //Move the tile
         Tile start = chessBoardSquares[startX][startY];
@@ -84,10 +86,6 @@ public class ViewController implements Serializable {
                 //Action listener for clicking the tiles
                 chessBoardSquares[i][j].addActionListener(e -> {
 
-                    if(!isWhitesTurn()) {
-                        gui.setMessage3("");
-                        doBlacksTurn();
-                    }
                     //Get the selected square and its attributes
                     Tile selectedSquare = (Tile) e.getSource();
                     int row = selectedSquare.getRow(), col = selectedSquare.getCol();
@@ -120,12 +118,12 @@ public class ViewController implements Serializable {
                         if(canMoveTo.contains(selectedSquare)) {
                             movePiece(tempTile, selectedSquare);
 
-                            gui.setMessage3("Click on any empty square for black's move");
-
+                            //and then do black's turn
                             turnComplete();
+                            doBlacksTurn();
 
                         } else {
-                            System.out.println("Cant move here");
+                            gui.setMessage2("Cant move here");
                         }
 
                         unhighlight(canMoveTo);

@@ -100,10 +100,10 @@
       <find>Button</find>
       <find>simp</find>
       <find>simpleM</find>
-      <find>print</find>
       <find>king</find>
       <find>engine</find>
       <find>println</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">

@@ -11,8 +11,7 @@ Currently supports 2 player version and against the computer.
 Players can only play as White against the computer.
 Screenshots of the game are available in the /screenshots folder.
 
-I am currently in the process of developing the chess engine, 
-since it currently exists in a very rudimentary form.
+I am currently in the process of developing the chess engine.
 
 Ongoing goal: Build a chess engine good enough to beat myself!
 
