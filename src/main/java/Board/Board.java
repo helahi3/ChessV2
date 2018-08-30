@@ -293,6 +293,7 @@ public class Board {
      */
     //TODO: Complete function by changing class variables
     public static boolean canCastle(King king, Rook rook){
+        //return false if king or rook has moved
         if(king.getHasMoved() || rook.getHasMoved()) {
             if(king.getColor() == Piece.PieceColor.WHITE)
                 whiteCanCastle = false;
@@ -301,15 +302,21 @@ public class Board {
             return false;
         }
 
-        //todo/ blegh
+        //Set enemy pieces
         List<Piece> pieces;
         if(king.getColor() == Piece.PieceColor.WHITE)
             pieces = blackPieces;
         else
             pieces = whitePieces;
 
-
+        //Get cells between king and rook
         ArrayList<Cell> interCells = cellsBetweenPieces(king, rook);
+
+        //If any of those cells contains a piece, return false
+        for(Cell cell : interCells){
+            if(!cell.isEmpty())
+                return false;
+        }
 
         //Loop through all enemy pieces and get PL moves
         //Loop through all cells in between rook adn king
@@ -377,10 +384,17 @@ public class Board {
         }
     }
 
-    //Check if input color has been checkmated
-    //if any piece has at least 1 legal move, game over
-    //maybe only call this method if check has been declared to avoid unnecessary calls
+
+    /**
+     * Check if a given color has been checkmated
+     * @param color the color we are checking
+     * @return true if mate
+     */
     private static boolean isCheckmate(Piece.PieceColor color) {
+        //Check if input color has been checkmated
+        //if any piece has at least 1 legal move, game over
+        //maybe only call this method if check has been declared to avoid unnecessary calls
+
         List<Piece> friendlyPieces = whitePieces;
         if(color == Piece.PieceColor.BLACK)
             friendlyPieces = blackPieces;

@@ -148,6 +148,10 @@ public class ViewController implements Serializable {
         checkForCheck();
     }
 
+//    private boolean canPromote(){
+//
+//    }
+
     /**
      * Checks which side's turn
      * @return true if white's turn
@@ -251,6 +255,7 @@ public class ViewController implements Serializable {
         Board.movePiece(start.getRow(), start.getCol(), end.getRow(), end.getCol());
     }
 
+
     /**
      * Color a particular tile
      * //todo: appears to be useless method. Figure out a use for it
@@ -286,7 +291,6 @@ public class ViewController implements Serializable {
         ArrayList<Tile> tiles = new ArrayList<>();
         for(Cell cell : legalMoves){
             tiles.add(chessBoardSquares[cell.getRow()][cell.getColumn()]);
-           // System.out.println(cell.getRow() + " " + cell.getColumn());
         }
         return tiles;
     }
