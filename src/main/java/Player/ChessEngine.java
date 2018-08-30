@@ -14,10 +14,9 @@ public class ChessEngine {
      * Modify this method to select which AI to use (playEngine1, playEngine2 etc.)
      * @return move coordinates
      */
-    public Move play(){
-        return playEngine4(2,Piece.PieceColor.BLACK);
+    public Move play() {
+        return playEngine2( Piece.PieceColor.BLACK);
     }
-
 
     /*
     Minmax (MM) logic:
@@ -32,6 +31,9 @@ public class ChessEngine {
     Bonus: Need to implement AB pruning
 
      */
+
+
+    //Improve and refactor playEngine4 here
 
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -49,13 +51,15 @@ public class ChessEngine {
 
         //Get all pieces and all moves
         List<Piece> pieces = getPieces(color);
+        if(depth == 0)
+            return playEngine2(pieces.get(0).getColor());
+
+
         List<Move> moves = getAllLegalMoves(pieces);
-        int bestScore = -1;
+        int bestScore = 0;
         Move flaggedMove = null;
 
         //if depth is 0, kill the best piece possible
-        if(depth == 0)
-            return playEngine2(pieces.get(0).getColor());
 
         //Loop through all moves
         for(Move move : moves){
@@ -79,7 +83,8 @@ public class ChessEngine {
         }
 
         //Return random move if no move flagged
-        if(flaggedMove == null || bestScore == 0) {
+        if(flaggedMove == null) {
+
             return playEngine1(color);
         }
 
@@ -163,6 +168,7 @@ public class ChessEngine {
 
         for(Piece piece : pieces){
 
+
             //move that kills the best piece
             Move temp = killBestPieceMove(piece.getLegalMoves());
 
@@ -184,7 +190,7 @@ public class ChessEngine {
             return playEngine1(color);
 
 
-        return doMove(pieceToMove,destination);
+        return getMove(pieceToMove,destination);
     }
 
     /**
@@ -231,7 +237,7 @@ public class ChessEngine {
             moves = randomPiece.getLegalMoves();
         } while (moves.size() == 0);
 
-        return doMove(randomPiece, getRandomMove(moves));
+        return getMove(randomPiece, getRandomMove(moves));
     }
 
     /**
@@ -268,7 +274,7 @@ public class ChessEngine {
      * @param destination the destination cell
      * @return coordinates of the move
      */
-    private Move doMove(Piece piece, Cell destination){
+    private Move getMove(Piece piece, Cell destination){
         int row = piece.getRow(), col = piece.getColumn();
         Cell[][] board = Board.getBoard();
         return new Move(board[row][col],board[destination.getRow()][destination.getColumn()]);
