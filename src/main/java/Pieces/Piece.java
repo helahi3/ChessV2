@@ -2,9 +2,11 @@ package Pieces;
 
 import Board.*;
 import Board.Cell;
+import com.sun.tools.internal.xjc.generator.util.WhitespaceNormalizer;
 
 import java.util.ArrayList;
 
+import static Pieces.Piece.PieceColor.BLACK;
 import static Pieces.Piece.PieceColor.WHITE;
 
 /**
@@ -240,8 +242,26 @@ public abstract class Piece {
      * Promotes a pawn to the input type
      * @param type
      */
-    void promotePiece(PieceType type){
+    public void promotePiece(PieceType type){
         this.type = type;
+    }
+
+    /**
+     * See if this piece is promoteable
+     * Must be a pawn in the last row
+     * @return
+     */
+    public boolean isPromoteable(){
+        if(this.getType() != PieceType.PAWN)
+            return false;
+
+        if((this.getRow() == 7 && this.getColor() == BLACK)
+                || (this.getRow() == 0 && this.getColor() == WHITE)){
+            return true;
+        }
+
+        return false;
+
     }
 
     /**

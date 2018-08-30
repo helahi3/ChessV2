@@ -54,4 +54,9 @@ public class Move {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public String toString(){
+        return "" + start + " "+ end + " Score: " + score  + " Piece moved: " + start.getPiece();
+    }
+
 }

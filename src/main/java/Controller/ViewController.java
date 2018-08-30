@@ -24,8 +24,9 @@ public class ViewController implements Serializable {
     private Cell[][] board;
     private int turn = 0;
 
-    private ArrayList<Tile> canMoveTo = new ArrayList<>();
+    private ArrayList<Tile> movementTiles = new ArrayList<>();
     private Tile tempTile;
+
 
     /**
      * Constructor that intializes the fields, the view, and the model
@@ -44,9 +45,6 @@ public class ViewController implements Serializable {
        
     }
 
-    public void initAIController(){
-    }
-
     /**
      * Does black's turn, getting a move from the engine and making the move
      */
@@ -62,6 +60,11 @@ public class ViewController implements Serializable {
         Tile start = chessBoardSquares[startX][startY];
         Tile end = chessBoardSquares[endX][endY];
         movePiece(start,end);
+
+        //highlight the tiles moved
+        //todo
+        movementTiles.add(start); movementTiles.add(end);
+        highlight(movementTiles);
 
         //move the board
         Board.movePiece(startX, startY, endX, endY);
@@ -92,14 +95,14 @@ public class ViewController implements Serializable {
 
                     //Check if its the first click or the second click
                     if(firstClick){
-
+                        //unhighlight(movementTiles);
                         gui.setMessage2("");
 
                         if(board[row][col].isEmpty()){} //do nothing if clicked an empty spot
 
                         //get a list of tiles that can be moved to, then set firstClick to false
                         else {
-                            canMoveTo = cellsToTiles(board[row][col].getPiece().getLegalMoves());
+                            movementTiles = cellsToTiles(board[row][col].getPiece().getLegalMoves());
 
                             if(!correctPieceClicked(isWhitesTurn(),selectedSquare)){
                                 gui.setMessage2("Not your move!");
@@ -108,14 +111,14 @@ public class ViewController implements Serializable {
 
                             checkPiece(selectedSquare);
 
-                            highlight(canMoveTo);
+                            highlight(movementTiles);
 
                             firstClick = false;
                             tempTile = selectedSquare;
                         }
                     } else { //if not first click
                         //See if this tile is contained in the list and move the piece
-                        if(canMoveTo.contains(selectedSquare)) {
+                        if(movementTiles.contains(selectedSquare)) {
                             movePiece(tempTile, selectedSquare);
 
                             //and then do black's turn
@@ -126,7 +129,7 @@ public class ViewController implements Serializable {
                             gui.setMessage2("Cant move here");
                         }
 
-                        unhighlight(canMoveTo);
+                        unhighlight(movementTiles);
 
                         firstClick = true;
                         tempTile = null;
@@ -148,9 +151,23 @@ public class ViewController implements Serializable {
         checkForCheck();
     }
 
-//    private boolean canPromote(){
-//
-//    }
+    private boolean canPromote(){
+        if(Board.promotedPiece == null){
+            return false;
+        } else {
+            Board.promotedPiece.getColor();
+            return true;
+        }
+    }
+
+    private void promotePiece(Tile tile){
+        if(tile.getRow() == 7)
+            tile.setIcon(new ImageIcon(
+                    GUI.chessPieceImages[BLACK][STARTING_ROW[3]]));
+        else if (tile.getRow() == 0)
+            tile.setIcon(new ImageIcon(
+                    GUI.chessPieceImages[BLACK][STARTING_ROW[3]]));
+    }
 
     /**
      * Checks which side's turn
@@ -194,9 +211,9 @@ public class ViewController implements Serializable {
      */
     private void checkForCheck() {
         if(Board.check)
-            gui.setMessage("Check!");
+            gui.setMessage3("Check!");
         if(Board.checkmate){
-            gui.setMessage("Checkmate");
+            gui.setMessage3("Checkmate");
             gui.gameOver(turn %2);
         }
     }
@@ -206,7 +223,7 @@ public class ViewController implements Serializable {
      */
     private void setupNewGame() {
         gui.setMessage("New Game");
-    //    endGame();
+        endGame();
         // set up the black pieces
         for (int ii = 0; ii < STARTING_ROW.length; ii++) {
             chessBoardSquares[0][ii].setIcon(new ImageIcon(
@@ -225,7 +242,7 @@ public class ViewController implements Serializable {
             chessBoardSquares[7][ii].setIcon(new ImageIcon(
                     GUI.chessPieceImages[WHITE][STARTING_ROW[ii]]));
         }
-    //    Board.initPieces();
+        Board.initializeGame();
     }
 
     /**
@@ -253,6 +270,9 @@ public class ViewController implements Serializable {
         end.setIcon(icon);
 
         Board.movePiece(start.getRow(), start.getCol(), end.getRow(), end.getCol());
+//        if(Board.hasPromoteablePiece){
+//            promotePiece(end);
+//        }
     }
 
 

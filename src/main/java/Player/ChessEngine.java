@@ -15,7 +15,7 @@ public class ChessEngine {
      * @return move coordinates
      */
     public Move play() {
-        return playEngine2( Piece.PieceColor.BLACK);
+        return playEngine3(Piece.PieceColor.BLACK);
     }
 
     /*

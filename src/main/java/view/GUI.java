@@ -160,8 +160,6 @@ public class GUI {
     private final void createImages() {
 
         try {
-
-
             chessPieceImages[0][0] = ImageIO.read(getClass().getResource("/bking.png"));
             chessPieceImages[0][1] = ImageIO.read(getClass().getResource("/bqueen.png"));
             chessPieceImages[0][2] = ImageIO.read(getClass().getResource("/brook.png"));
@@ -179,6 +177,14 @@ public class GUI {
 
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    public void clearBoard(){
+        for(int i=0; i<chessBoardSquares.length; i++){
+            for(int j=0; j<chessBoardSquares[i].length; j++){
+                chessBoardSquares[i][j].clear();
+            }
         }
     }
 

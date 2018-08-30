@@ -26,6 +26,8 @@ public class Board {
 
     public static boolean whiteCanCastle = true;
     public static boolean blackCanCastle = true;
+    public static Piece promotedPiece = null;
+    public static boolean hasPromoteablePiece = false;
 
     /**
      * Checks if the board has been initialized, then inits and returns it
@@ -108,6 +110,9 @@ public class Board {
      * Marks a reference to the 2 kings
      */
     private static void initPieces(){
+        whitePieces = new ArrayList<>();
+        blackPieces = new ArrayList<>();
+
         for(int i=0; i< board.length; i++){
             for(int j=0; j<board[i].length; j++){
 
@@ -229,7 +234,6 @@ public class Board {
         //Get the piece at the starting point, return false otherwise
         Piece piece = startCell.getPiece();
         if(piece == null) {
-            System.out.println("No piece there");
             return;
         }
 
@@ -242,8 +246,6 @@ public class Board {
             System.out.println("cant move to that spot");
         }
         else {
-
-
 
             simpleMove(startCell, endCell);
             if(!piece.getHasMoved())
@@ -260,6 +262,8 @@ public class Board {
                 check = true;
                 isCheckmate(piece.getEnemyColor());
             }
+
+          //  promotePiece(piece,Piece.PieceType.QUEEN);
         }
     }
 
@@ -281,6 +285,31 @@ public class Board {
      */
     public static void undoMove(Move move){
         undoMove(move.getStart(),move.getEnd(),move.getPieceCaptured());
+    }
+
+    /**
+     * Promote the input piece to the selected type
+     * @param piece the piece we want to promote (we check if its a pawn)
+     * @param type the type we are promoting it to
+     */
+    public static void promotePiece(Piece piece, Piece.PieceType type){
+        //if the piece is not promotable, do nothing and return
+        if(!piece.isPromoteable())
+            hasPromoteablePiece = false;
+
+        if(piece.getColor() == Piece.PieceColor.WHITE){
+            whitePieces.remove(piece);
+            piece = new Queen(piece.getRow(),piece.getColumn(),piece.getColor());
+            whitePieces.add(piece);
+        } else {
+            blackPieces.remove(piece);
+            piece = new Queen(piece.getRow(),piece.getColumn(),piece.getColor());
+            blackPieces.add(piece);
+        }
+
+        promotedPiece = piece;
+        piece.promotePiece(type);
+        hasPromoteablePiece = true;
     }
 
 
@@ -448,7 +477,6 @@ public class Board {
                 board[i][j] = new Cell(i,j);
             }
         }
-
     }
 
 

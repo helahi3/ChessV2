@@ -34,7 +34,8 @@ public class Pawn extends Piece {
             if(getRow() == 7)
                 promotePiece(getPromotionType());
 
-            if(Board.isCellEmpty(this.getRow() + 1, this.getColumn())){ //Check if the next spot is empty
+            if(this.getRow() + 1 < board.length
+                && Board.isCellEmpty(this.getRow() + 1, this.getColumn())){ //Check if the next spot is empty
                 moves.add(board[getRow() + 1][getColumn()]); //then add it
 
                 //if the piece has not moved, and the next 2 spots are empty
@@ -64,7 +65,8 @@ public class Pawn extends Piece {
         } else {
             //For white, same code with reversed direction
 
-            if(Board.isCellEmpty(this.getRow() - 1, this.getColumn())){ //Check if the next spot is empty
+            if(this.getRow() - 1 >= 0
+                && Board.isCellEmpty(this.getRow() - 1, this.getColumn())){ //Check if the next spot is empty
                 moves.add(board[getRow() - 1][getColumn()]); //then add it
 
                 //if the piece has not moved, and the next 2 spots are empty
@@ -93,6 +95,7 @@ public class Pawn extends Piece {
         }
         return moves;
     }
+
 
 
     public PieceType getPromotionType(){

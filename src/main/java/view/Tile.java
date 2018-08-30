@@ -20,6 +20,11 @@ public class Tile extends JButton {
 
     }
 
+    public void clear(){
+        defaultBackground = null;
+        defaultForeground = null;
+    }
+
     public int getRow() {
         return row;
     }
