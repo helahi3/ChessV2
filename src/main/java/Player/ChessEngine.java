@@ -76,11 +76,10 @@ public class ChessEngine {
             }
             //undo move
             Board.undoMove(move);
-
         }
 
         //Return random move if no move flagged
-        if(flaggedMove == null){
+        if(flaggedMove == null || bestScore == 0) {
             return playEngine1(color);
         }
 
