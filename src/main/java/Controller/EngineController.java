@@ -1,5 +1,6 @@
 package Controller;
 
+import Board.Move;
 import Player.ChessEngine;
 
 /**
@@ -24,7 +25,7 @@ public class EngineController {
      * Gets the move from the engine and returns it
      * @return int[] that contains starting and ending coordinates of move
      */
-    public static int[] move(){
+    public static Move move(){
         return engine.play();
     }
 
