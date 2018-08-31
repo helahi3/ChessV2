@@ -42,14 +42,14 @@ public class GUI {
         tools = new JToolBar();
         tools.setFloatable(false);
         gui.add(tools, BorderLayout.PAGE_START);
-        Action newGameAction = new AbstractAction("New") {
+        Action newGameAction = new AbstractAction("Play Against Computer") {
 
             public void actionPerformed(ActionEvent e) {
                 setupNewGame();
             }
         };
         tools.add(newGameAction);
-        tools.add(new JButton("Undo")); // TODO - add functionality!
+        tools.add(new JButton("Play Two-Player")); // TODO - add functionality!
         tools.addSeparator();
         tools.add(message);
         tools.addSeparator();
@@ -210,10 +210,10 @@ public class GUI {
     //todo
     public void gameOver(int winner){
         if(winner == 0){
-            JOptionPane.showMessageDialog(null, "Game over white wins", "InfoBox: " + "Check Mate", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Game over. Black Wins", "InfoBox: " + "Check Mate", JOptionPane.INFORMATION_MESSAGE);
 
         } else {
-            JOptionPane pane = new JOptionPane("Game over. Black wins!");
+            JOptionPane.showMessageDialog(null, "Game over. White Wins", "InfoBox: " + "Check Mate", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -221,26 +221,6 @@ public class GUI {
      * Initializes the icons of the initial chess board piece places
      */
     private final void setupNewGame() {
-        //       message.setText("Make your move!");
-//        endGame();
-//        // set up the black pieces
-//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-//            chessBoardSquares[0][ii].setIcon(new ImageIcon(
-//                    chessPieceImages[BLACK][STARTING_ROW[ii]]));
-//        }
-//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-//            chessBoardSquares[1][ii].setIcon(new ImageIcon(
-//                    chessPieceImages[BLACK][PAWN]));
-//        }
-//        // set up the white pieces
-//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-//            chessBoardSquares[6][ii].setIcon(new ImageIcon(
-//                    chessPieceImages[WHITE][PAWN]));
-//        }
-//        for (int ii = 0; ii < STARTING_ROW.length; ii++) {
-//            chessBoardSquares[7][ii].setIcon(new ImageIcon(
-//                    chessPieceImages[WHITE][STARTING_ROW[ii]]));
-//        }
     }
 
 

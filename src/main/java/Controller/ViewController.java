@@ -27,6 +27,8 @@ public class ViewController implements Serializable {
     private ArrayList<Tile> movementTiles = new ArrayList<>();
     private Tile tempTile;
 
+    private boolean singlePlayer;
+
 
     /**
      * Constructor that intializes the fields, the view, and the model
@@ -81,7 +83,8 @@ public class ViewController implements Serializable {
      */
     public void initController(){
 
-        ((JButton) gui.getTools().getComponentAtIndex(0)).addActionListener(e -> setupNewGame());
+        ((JButton) gui.getTools().getComponentAtIndex(0)).addActionListener(e -> setupSinglePlayer());
+        ((JButton) gui.getTools().getComponentAtIndex(1)).addActionListener(e -> setupMultiplayer());
 
         for(int i = 0; i < chessBoardSquares.length; i++){
             for(int j=0; j<chessBoardSquares[i].length; j++){
@@ -93,49 +96,103 @@ public class ViewController implements Serializable {
                     Tile selectedSquare = (Tile) e.getSource();
                     int row = selectedSquare.getRow(), col = selectedSquare.getCol();
 
-                    //Check if its the first click or the second click
-                    if(firstClick){
-                        //unhighlight(movementTiles);
-                        gui.setMessage2("");
-
-                        if(board[row][col].isEmpty()){} //do nothing if clicked an empty spot
-
-                        //get a list of tiles that can be moved to, then set firstClick to false
-                        else {
-                            movementTiles = cellsToTiles(board[row][col].getPiece().getLegalMoves());
-
-                            if(!correctPieceClicked(isWhitesTurn(),selectedSquare)){
-                                gui.setMessage2("Not your move!");
-                                return;
-                            }
-
-                            checkPiece(selectedSquare);
-
-                            highlight(movementTiles);
-
-                            firstClick = false;
-                            tempTile = selectedSquare;
-                        }
-                    } else { //if not first click
-                        //See if this tile is contained in the list and move the piece
-                        if(movementTiles.contains(selectedSquare)) {
-                            movePiece(tempTile, selectedSquare);
-
-                            //and then do black's turn
-                            turnComplete();
-                            doBlacksTurn();
-
-                        } else {
-                            gui.setMessage2("Cant move here");
-                        }
-
-                        unhighlight(movementTiles);
-
-                        firstClick = true;
-                        tempTile = null;
-                    }
+                    if(singlePlayer)
+                        singlePlayerAction(row,col,selectedSquare);
+                    else
+                        multiplayerAction(row,col,selectedSquare);
                 });
             }
+        }
+    }
+
+    private void setupSinglePlayer(){
+        singlePlayer = true;
+        setupNewGame();
+    }
+
+    private void setupMultiplayer(){
+        singlePlayer = false;
+        setupNewGame();
+    }
+
+    private void singlePlayerAction(int row, int col, Tile selectedSquare){
+        //Check if its the first click or the second click
+        if(firstClick){
+            //unhighlight(movementTiles);
+            gui.setMessage2("");
+
+            if(board[row][col].isEmpty()){} //do nothing if clicked an empty spot
+
+            //get a list of tiles that can be moved to, then set firstClick to false
+            else {
+                movementTiles = cellsToTiles(board[row][col].getPiece().getLegalMoves());
+
+                if(!correctPieceClicked(isWhitesTurn(),selectedSquare)){
+                    gui.setMessage2("Not your move!");
+                    return;
+                }
+
+                checkPiece(selectedSquare);
+
+                highlight(movementTiles);
+
+                firstClick = false;
+                tempTile = selectedSquare;
+            }
+        } else { //if not first click
+            //See if this tile is contained in the list and move the piece
+            if(movementTiles.contains(selectedSquare)) {
+                movePiece(tempTile, selectedSquare);
+
+                //and then do black's turn
+                turnComplete();
+                doBlacksTurn();
+
+            } else {
+                gui.setMessage2("Cant move here");
+            }
+
+            unhighlight(movementTiles);
+
+            firstClick = true;
+            tempTile = null;
+        }
+    }
+
+    private void multiplayerAction(int row, int col, Tile selectedSquare){
+        //Check if its the first click or the second
+        if(firstClick){
+            gui.setMessage2("");
+            if(board[row][col].isEmpty()){} //do nothing
+
+            //get a list of tiles that can be moved to, highlight them and set firstClick to false
+            else {
+                movementTiles = cellsToTiles(board[row][col].getPiece().getLegalMoves());
+
+                if(!correctPieceClicked(isWhitesTurn(),selectedSquare)){
+                    gui.setMessage2("Not your move");
+                    return;
+                }
+
+                checkPiece(selectedSquare);
+                highlight(movementTiles);
+                firstClick = false;
+                tempTile = selectedSquare;
+            }
+        } else {
+
+            if(movementTiles.contains(selectedSquare)) {
+                movePiece(tempTile,selectedSquare);
+
+                turnComplete();
+            } else {
+                gui.setMessage2("Cant move here");
+            }
+
+            unhighlight(movementTiles);
+
+            firstClick = true;
+            tempTile = null;
         }
     }
 
