@@ -17,12 +17,11 @@ Ongoing goal: Build a chess engine good enough to beat myself!
 
 TODO: 
 
-Complete GUI by allowing user to select game mode 
-(2 player or AI), difficulty level and teams
-
 Complete Pawn promotion and castling movement logic. 
 Start working on en passant
 
 
 
-Note: The app is still in development, but feel free to test it out 
+Note: The app is still in development, but feel free to test it out.
+You can choose the AI difficulty by going to /src/main/java/Player/ChessEngine
+and selecting a different AI
