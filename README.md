@@ -23,5 +23,5 @@ Start working on en passant
 
 
 Note: The app is still in development, but feel free to test it out.
-You can choose the AI difficulty by going to /src/main/java/Player/ChessEngine
+You can choose the AI difficulty by going to /src/main/java/Engine/ChessEngine
 and selecting a different AI
