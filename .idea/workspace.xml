@@ -7,24 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="Updated runnable">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Perft/Perft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Screenshots/Empty Board.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Screenshots/King Selected and in check.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Screenshots/Queen Selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ChessApp/chess_v2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessApp/chess_v2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/EngineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/EngineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Pieces/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player/ChessEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/ChessEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/EngineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/EngineController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Pieces/Piece$PieceType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Pieces/Piece$PieceType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Pieces/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Pieces/Piece.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Player/ChessEngine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Player/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Perft/Perft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Perft/Perft.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -114,8 +100,8 @@
       <file leaf-file-name="Perft.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Perft/Perft.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="60" column="2" lean-forward="true" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
+            <state relative-caret-position="175">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#827#833#0" expanded="true" />
@@ -268,6 +254,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Pieces" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -328,7 +322,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Perft">
+  <component name="RunManager" selected="Application.TestingApp">
     <configuration name="Perft" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Perft.Perft" />
       <module name="chess_v2" />
@@ -398,8 +392,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Perft" />
         <item itemvalue="Application.TestingApp" />
+        <item itemvalue="Application.Perft" />
       </list>
     </recent_temporary>
   </component>
@@ -437,7 +431,7 @@
       <workItem from="1535652739906" duration="443000" />
       <workItem from="1535653520397" duration="19000" />
       <workItem from="1535704675883" duration="4254000" />
-      <workItem from="1535779512198" duration="1425000" />
+      <workItem from="1535779512198" duration="1850000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1534418034123</created>
@@ -649,15 +643,28 @@
       <option name="project" value="LOCAL" />
       <updated>1535708268189</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added perft test">
+      <created>1535781125270</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1535781125271</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Code cleanup, improved engine">
+      <created>1535781953054</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1535781953054</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133496000" />
+    <option name="totallyTimeSpent" value="133921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -669,11 +676,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.010256411" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.27307692" />
+      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.27307692" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32948717" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.29041487" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.29041487" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -701,8 +708,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/java" />
     </ignored-roots>
-    <MESSAGE value="Initial commit w/ basic functionality of game (on console)" />
-    <MESSAGE value="Fixed movement related bugs" />
     <MESSAGE value="Created (most of) the gui" />
     <MESSAGE value="Added to gui, started controller" />
     <MESSAGE value="Completed basic version of controller (playable app)" />
@@ -726,7 +731,9 @@
     <MESSAGE value="Added screenshots" />
     <MESSAGE value="Modified UI to allow single- and multiplayer mode" />
     <MESSAGE value="Updated readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated readme" />
+    <MESSAGE value="Added perft test" />
+    <MESSAGE value="Code cleanup, improved engine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup, improved engine" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1053,8 +1060,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Perft/Perft.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="60" column="2" lean-forward="true" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
+        <state relative-caret-position="175">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#827#833#0" expanded="true" />

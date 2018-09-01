@@ -28,7 +28,7 @@ public class Knight extends Piece {
         ArrayList<Cell> moves = new ArrayList<Cell>();
 
         //Possible ways to move a knight
-        int[][] possibleOffsets = {{-2,-1},{-2,1},{-1,-2},{-1,2},{1,-2},{1,2},{2,-1},{2,-1}};
+        int[][] possibleOffsets = {{-2,-1},{-2,1},{-1,-2},{-1,2},{1,-2},{1,2},{2,1},{2,-1}};
 
         for(int i=0; i<possibleOffsets.length; i++){
             int x = possibleOffsets[i][0] + getRow();
