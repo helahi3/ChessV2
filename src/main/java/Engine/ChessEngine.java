@@ -1,4 +1,4 @@
-package Player;
+package Engine;
 
 import Board.*;
 import Board.Cell;
@@ -15,7 +15,7 @@ public class ChessEngine {
      * @return move coordinates
      */
     public Move play() {
-        return playEngine1(Piece.PieceColor.BLACK);
+        return playEngine5(2,Piece.PieceColor.BLACK);
     }
 
     /*
@@ -34,6 +34,52 @@ public class ChessEngine {
 
 
     //Improve and refactor playEngine4 here
+    private Move playEngine5(int depth, Piece.PieceColor color){
+
+
+        //Get all pieces and all moves
+        List<Piece> pieces = getPieces(color);
+        if(depth == 0)
+            return playEngine2(pieces.get(0).getColor());
+
+        List<Move> moves = getAllLegalMoves(pieces);
+        int bestScore = -100;
+        Move flaggedMove = null;
+
+
+        for(Move move : moves){
+            int currentScore = move.getScore();
+            Board.makeMove(move);
+
+            Move oppMove = playEngine5(depth - 1, Piece.getOppositeColor(color));
+
+            currentScore = currentScore - oppMove.getScore();
+
+            if(currentScore > bestScore){
+                bestScore = currentScore;
+                flaggedMove = move;
+            }
+
+            Board.undoMove(move);
+        }
+
+        return flaggedMove;
+    }
+
+//    private void x(){
+//        x++;
+//     //   System.out.println("x" +x);
+//    }
+//
+//    private void y(){
+//        y++;
+//     //   System.out.println("y" +y);
+//    }
+//
+//    private void z(){
+//        System.out.println("z" + z++);
+//    }
+//    int x =0, y=0, z=0;
 
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////

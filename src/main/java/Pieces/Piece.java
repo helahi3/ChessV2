@@ -22,7 +22,15 @@ public abstract class Piece {
      */
     public enum PieceColor {
         WHITE,BLACK
+
     }
+
+    public static PieceColor getOppositeColor(PieceColor color){
+        if(color == WHITE)
+            return BLACK;
+        return WHITE;
+    }
+
 
     /**
      * The 6 possible types of a piece
@@ -30,6 +38,8 @@ public abstract class Piece {
     public enum PieceType {
         KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN
     }
+
+
 
     /**
      * Private fields regarding the piece

@@ -1,7 +1,7 @@
 package Controller;
 
 import Board.Move;
-import Player.ChessEngine;
+import Engine.ChessEngine;
 
 /**
  * Engine controller that interacts with the ViewController and the ChessEngine
