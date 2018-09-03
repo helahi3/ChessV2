@@ -18,68 +18,55 @@ public class ChessEngine {
         return playEngine5(2,Piece.PieceColor.BLACK);
     }
 
-    /*
-    Minmax (MM) logic:
-
-    1) Do a move and evaluate score
-    2) See opponents best response move (using playEngine2?)
-    3) Evaluate our score at that point
-
-    Repeat steps for all legal moves
-    Do move with highest score in 3)
-
-    Bonus: Need to implement AB pruning
-
-     */
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////// FIXES PROBLEMS WITH ENGINE 4 //////////////////////////////
+    //////////////////////////// FINALLY MADE A DECENT ENGINE!!!! ////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
 
 
-    //Improve and refactor playEngine4 here
     private Move playEngine5(int depth, Piece.PieceColor color){
 
-
-        //Get all pieces and all moves
-        List<Piece> pieces = getPieces(color);
+        //if depth is 0, get the move that kills the best possible piece (or a random move)
         if(depth == 0)
-            return playEngine2(pieces.get(0).getColor());
+            return playEngine2(color);
 
+        //Get all pieces and legal moves
+        List<Piece> pieces = getPieces(color);
         List<Move> moves = getAllLegalMoves(pieces);
+
         int bestScore = -100;
-        Move flaggedMove = null;
+        List<Move> flaggedMoves = new ArrayList<Move>();
 
-
+        //loop through all legal moves
+        //make move, get score, recursively run method for opponent, subtract the score from that move, undo move
+        //flag all the best possible moves in a list
+        //return a random move from that list
         for(Move move : moves){
+
             int currentScore = move.getScore();
             Board.makeMove(move);
 
             Move oppMove = playEngine5(depth - 1, Piece.getOppositeColor(color));
-
             currentScore = currentScore - oppMove.getScore();
 
+            if(currentScore == bestScore){
+                flaggedMoves.add(move);
+            }
+
             if(currentScore > bestScore){
+                flaggedMoves.clear();
                 bestScore = currentScore;
-                flaggedMove = move;
+                flaggedMoves.add(move);
             }
 
             Board.undoMove(move);
         }
 
-        return flaggedMove;
+        return getRandomMove(flaggedMoves);
     }
 
-//    private void x(){
-//        x++;
-//     //   System.out.println("x" +x);
-//    }
-//
-//    private void y(){
-//        y++;
-//     //   System.out.println("y" +y);
-//    }
-//
-//    private void z(){
-//        System.out.println("z" + z++);
-//    }
-//    int x =0, y=0, z=0;
 
     //////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -214,7 +201,6 @@ public class ChessEngine {
 
         for(Piece piece : pieces){
 
-
             //move that kills the best piece
             Move temp = killBestPieceMove(piece.getLegalMoves());
 
@@ -275,15 +261,24 @@ public class ChessEngine {
      * Starting point for engine
      * @return coordinates of move
      */
-    private Move playEngine1(Piece.PieceColor color){
-        Piece randomPiece;
-        ArrayList<Cell> moves;
-        do{
-            randomPiece = getRandomPiece(color);
-            moves = randomPiece.getLegalMoves();
-        } while (moves.size() == 0);
+//    private Move playEngine1(Piece.PieceColor color){
+//        Piece randomPiece;
+//        ArrayList<Cell> moves;
+//        do{
+//            randomPiece = getRandomPiece(color);
+//            moves = randomPiece.getLegalMoves();
+//        } while (moves.size() == 0);
+//
+//        return getMove(randomPiece, getRandomMove(moves));
+//    }
 
-        return getMove(randomPiece, getRandomMove(moves));
+    private Move playEngine1(Piece.PieceColor color){
+        List<Piece> pieces = getPieces(color);
+        List<Move> moves = new ArrayList<Move>();
+        for(Piece piece : pieces){
+            moves.addAll(piece.getMoves());
+        }
+        return getRandomMove(moves);
     }
 
     /**
@@ -291,7 +286,11 @@ public class ChessEngine {
      * @param moves list of moves
      * @return a random move from that list
      */
-    private Cell getRandomMove(ArrayList<Cell> moves){
+//    private Cell getRandomMove(ArrayList<Cell> moves){
+//        int randNum = (int) (Math.random() * moves.size());
+//        return moves.get(randNum);
+//    }
+    private Move getRandomMove(List<Move> moves){
         int randNum = (int) (Math.random() * moves.size());
         return moves.get(randNum);
     }
