@@ -243,7 +243,7 @@ public class Board {
         //todo: possibly redundant if section
         ArrayList<Cell> possibleMoves = piece.getLegalMoves();
         if(!possibleMoves.contains(endCell)) {
-            System.out.println("cant move to that spot");
+            //System.out.println("cant move to that spot");
         }
         else {
 
@@ -275,6 +275,7 @@ public class Board {
     public static void makeMove(Move move){
         Cell start = move.getStart();
         Cell end = move.getEnd();
+        start.getPiece().setNewLocation(end);
         simpleMove(start,end);
     }
 
@@ -284,6 +285,7 @@ public class Board {
      * @param move the mode undone
      */
     public static void undoMove(Move move){
+        move.getEnd().getPiece().setNewLocation(move.getStart());
         undoMove(move.getStart(),move.getEnd(),move.getPieceCaptured());
     }
 

@@ -58,5 +58,4 @@ public class Move {
     public String toString(){
         return "" + start + " "+ end + " Score: " + score  + " Piece moved: " + start.getPiece();
     }
-
 }
