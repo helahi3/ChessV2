@@ -49,7 +49,7 @@ public class GUI {
             }
         };
         tools.add(newGameAction);
-        tools.add(new JButton("Play Two-Engine")); // TODO - add functionality!
+        tools.add(new JButton("Play Two Player"));
         tools.addSeparator();
         tools.add(message);
         tools.addSeparator();
@@ -200,7 +200,6 @@ public class GUI {
 
     public void getPromotionType(){
         JOptionPane pane = new JOptionPane();
-       // pane.se
     }
 
     public Tile[][] getChessBoardSquares() {

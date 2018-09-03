@@ -6,17 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="Updated runnable">
+    <list default="true" id="cdf1ac2c-1ade-47bc-908c-7b29c2ed9662" name="Default" comment="Committ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Screenshots/Empty Board.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Screenshots/King Selected and in check.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Screenshots/Queen Selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/ChessEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/ChessEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Perft/Perft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Perft/Perft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Board/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Pieces/Knight.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Pieces/Knight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ChessApp/chess_v2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ChessApp/chess_v2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GUI.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +43,12 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/view/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2940">
-              <caret line="215" column="67" selection-start-line="215" selection-start-column="67" selection-end-line="215" selection-end-column="67" />
+            <state relative-caret-position="600">
+              <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
+              <folding>
+                <element signature="e#7349#7350#0" expanded="true" />
+                <element signature="e#7401#7402#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChessEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ChessEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Engine/ChessEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="165">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
               <folding>
                 <element signature="e#338#339#0" expanded="true" />
                 <element signature="e#396#397#0" expanded="true" />
@@ -93,6 +95,18 @@
                 <element signature="e#9896#9902#0" expanded="true" />
                 <element signature="e#11052#11058#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="210">
+                <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -187,8 +201,6 @@
         <option value="$PROJECT_DIR$/src/main/java/view/Tile.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Pawn.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/ViewController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/view/GUI.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/Player/ChessEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Piece.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pieces/Knight.java" />
@@ -196,6 +208,8 @@
         <option value="$PROJECT_DIR$/src/test/java/Perft/Perft.java" />
         <option value="$PROJECT_DIR$/src/main/java/Board/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/Engine/ChessEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/view/GUI.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -244,6 +258,24 @@
             <path>
               <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chess_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="ChessApp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chess_v2" type="b2602c69:ProjectViewProjectNode" />
@@ -454,7 +486,7 @@
       <workItem from="1535653520397" duration="19000" />
       <workItem from="1535704675883" duration="4254000" />
       <workItem from="1535779512198" duration="4441000" />
-      <workItem from="1535880317092" duration="2982000" />
+      <workItem from="1535880317092" duration="3628000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1534418034123</created>
@@ -687,11 +719,32 @@
       <option name="project" value="LOCAL" />
       <updated>1535782160421</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added tests and debugged movement">
+      <created>1535952413748</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1535952413749</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Created a 'decent' engine">
+      <created>1535952436016</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1535952436016</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Updated runnable">
+      <created>1535952783080</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1535952783080</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139494000" />
+    <option name="totallyTimeSpent" value="140140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -707,11 +760,11 @@
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.010256411" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.27307692" />
+      <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.27307692" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32948717" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.29470673" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.29470673" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -739,8 +792,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src/main/java" />
     </ignored-roots>
-    <MESSAGE value="Added to gui, started controller" />
-    <MESSAGE value="Completed basic version of controller (playable app)" />
     <MESSAGE value="Bug fixes regarding movement" />
     <MESSAGE value="Created working version of app" />
     <MESSAGE value="Created first iteration of engine (AI)" />
@@ -757,14 +808,16 @@
     <MESSAGE value="Cleaned up Controller to enable smoother gameplay" />
     <MESSAGE value="." />
     <MESSAGE value="Minor progress on new AI" />
-    <MESSAGE value="Updated runnable" />
     <MESSAGE value="Added screenshots" />
     <MESSAGE value="Modified UI to allow single- and multiplayer mode" />
     <MESSAGE value="Updated readme" />
     <MESSAGE value="Added perft test" />
     <MESSAGE value="Code cleanup, improved engine" />
     <MESSAGE value="Fixed movement bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed movement bug" />
+    <MESSAGE value="Added tests and debugged movement" />
+    <MESSAGE value="Created a 'decent' engine" />
+    <MESSAGE value="Updated runnable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated runnable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1011,27 +1064,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Engine/Player.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/view/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2940">
-          <caret line="215" column="67" selection-start-line="215" selection-start-column="67" selection-end-line="215" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ViewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
           <caret line="99" column="42" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="390">
-            <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1088,10 +1124,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/view/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
+          <folding>
+            <element signature="e#7349#7350#0" expanded="true" />
+            <element signature="e#7401#7402#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Engine/ChessEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="165">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
             <element signature="e#338#339#0" expanded="true" />
             <element signature="e#396#397#0" expanded="true" />
@@ -1099,6 +1146,16 @@
             <element signature="e#9896#9902#0" expanded="true" />
             <element signature="e#11052#11058#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
