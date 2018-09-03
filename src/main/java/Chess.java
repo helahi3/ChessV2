@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class Chess {
 
     public static void main(String[] args){
-        Cell[][] board = Board.getBoard();
+
+           Cell[][] board = Board.getBoard();
 
        initializeGame(board);
         game(board);
@@ -19,14 +20,13 @@ public class Chess {
     }
 
     public static void initializeGame(Cell[][] board){
-        Piece[] pieces = new Piece[5];
+        Piece[] pieces = new Piece[4];
 
 
-        pieces[0] = new Pawn(5,5,Piece.PieceColor.WHITE);
-        pieces[1] = new Pawn(4,4,Piece.PieceColor.BLACK);
-        pieces[2] = new King(7,5,Piece.PieceColor.WHITE);
-        pieces[3] = new Queen(1,5,Piece.PieceColor.BLACK);
-        pieces[4] = new King(0,0,Piece.PieceColor.BLACK);
+        pieces[0] = new Pawn(2,3,Piece.PieceColor.WHITE);
+        pieces[1] = new King(7,5,Piece.PieceColor.WHITE);
+        pieces[2] = new Queen(1,5,Piece.PieceColor.BLACK);
+        pieces[3] = new King(0,6,Piece.PieceColor.BLACK);
 
 
         Board.setBoard(pieces);
@@ -64,7 +64,7 @@ public class Chess {
         while(true) {
             print(board);
             System.out.println("Enter starting cell, followed by ending cell (In the form D2, D4). Enter 999 to quit");
-            //	try {
+
             temp = sc.nextLine();
 
             arr = convertNotation(temp);
@@ -79,9 +79,6 @@ public class Chess {
 
             Board.movePiece(startX, startY, endX, endY);
 
-//			} catch (NullPointerException e) {
-//				System.out.println("Input in the wrong format");
-//			}
         }
     }
 

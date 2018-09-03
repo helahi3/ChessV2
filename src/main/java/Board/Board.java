@@ -219,6 +219,7 @@ public class Board {
         initPieces();
     }
 
+
     /**
      * Move a piece given its starting and ending coordinates
      * @param sRow starting row
@@ -227,6 +228,7 @@ public class Board {
      * @param eCol ending column
      */
     public static void movePiece(int sRow, int sCol, int eRow, int eCol){
+
 
         Cell startCell = board[sRow][sCol];
         Cell endCell = board[eRow][eCol];
@@ -263,7 +265,7 @@ public class Board {
                 isCheckmate(piece.getEnemyColor());
             }
 
-          //  promotePiece(piece,Piece.PieceType.QUEEN);
+            promotePiece(piece,Piece.PieceType.QUEEN);
         }
     }
 
@@ -294,23 +296,29 @@ public class Board {
      * @param piece the piece we want to promote (we check if its a pawn)
      * @param type the type we are promoting it to
      */
-    public static void promotePiece(Piece piece, Piece.PieceType type){
+    private static void promotePiece(Piece piece, Piece.PieceType type){
+
         //if the piece is not promotable, do nothing and return
-        if(!piece.isPromoteable())
+        if(!piece.isPromoteable()) {
             hasPromoteablePiece = false;
+            return;
+        }
 
         if(piece.getColor() == Piece.PieceColor.WHITE){
             whitePieces.remove(piece);
-            piece = new Queen(piece.getRow(),piece.getColumn(),piece.getColor());
+            piece = new Queen(piece.getRow(),piece.getColumn(),Piece.PieceColor.WHITE);
             whitePieces.add(piece);
-        } else {
+
+        } else if (piece.getColor() == Piece.PieceColor.BLACK){
             blackPieces.remove(piece);
             piece = new Queen(piece.getRow(),piece.getColumn(),piece.getColor());
             blackPieces.add(piece);
         }
 
+        board[piece.getRow()][piece.getColumn()].replacePiece(piece);
+
         promotedPiece = piece;
-        piece.promotePiece(type);
+        System.out.println(promotedPiece.getColor() + " " + promotedPiece.getType());
         hasPromoteablePiece = true;
     }
 
@@ -319,12 +327,17 @@ public class Board {
      * Checks if a given King/Rook pair can castle
      * In order to castle, neither piece must have moved and none of the spaces from king - rook can be threatened
      * @param king
-     * @param rook
+     * @param kingSide
      * @return if castling is legal
      */
-    //TODO: Complete function by changing class variables
-    public static boolean canCastle(King king, Rook rook){
-        //return false if king or rook has moved
+    public static boolean canCastle(King king, boolean kingSide){
+        //Return false if the piece we got is null (i.e. not a rook)
+        Piece rook = getRook(king.getColor(),kingSide);
+        if(rook == null){
+            return false;
+        }
+
+        //return false if either king or rook has moved
         if(king.getHasMoved() || rook.getHasMoved()) {
             if(king.getColor() == Piece.PieceColor.WHITE)
                 whiteCanCastle = false;
@@ -360,9 +373,46 @@ public class Board {
                 }
             }
         }
-
         return true;
     }
+
+    //Get the piece at the relevant corner, see if its a rook, else return null
+    private static Piece getRook(Piece.PieceColor color, boolean kingSide){
+        Piece rook;
+        if(color == Piece.PieceColor.WHITE){
+            if(kingSide){
+                rook = board[7][7].getPiece();
+                if(!(rook instanceof Rook)){
+                    return null;
+                }
+            }
+            else {
+                rook = board[7][0].getPiece();
+                if(!(rook instanceof Rook)){
+                    return null;
+                }
+            }
+        }
+        //repeat for black
+        else {
+            if(kingSide){
+                rook = board[0][7].getPiece();
+                if(!(rook instanceof Rook)){
+                    return null;
+                }
+            }
+            else {
+                rook = board[0][0].getPiece();
+                if(!(rook instanceof Rook)){
+                    return null;
+                }
+            }
+        }
+
+        return rook;
+    }
+
+
 
     private static ArrayList<Cell> cellsBetweenPieces(Piece p1, Piece p2){
         ArrayList<Cell> interCells = new ArrayList<Cell>();

@@ -43,9 +43,45 @@ public class King extends Piece {
                 }
             }
         }
+//        if(castling(true))
+//            moves.add(castlingCell(getColor(),true));
+//        if(castling(false))
+//            moves.add(castlingCell(getColor(),false));
+
         return moves;
     }
 
+
+//    boolean castling(boolean kingSide){
+//        if(getColor() == PieceColor.WHITE)
+//            if(!Board.whiteCanCastle)
+//                return false;
+//        else
+//            if(!Board.blackCanCastle)
+//                return false;
+//
+//        return Board.canCastle(this,kingSide);
+//    }
+//
+//    Cell castlingCell(PieceColor color, boolean kingSide){
+//        Cell[][] board = Board.getBoard();
+//
+//        if(color == PieceColor.WHITE){
+//            if(kingSide){
+//                return board[7][6];
+//            }
+//            else{
+//                return board[7][2];
+//            }
+//        } else {
+//            if(kingSide){
+//                return board[0][6];
+//            }
+//            else {
+//                return board[0][2];
+//            }
+//        }
+//    }
 
     public boolean isInCheck(){
         List<Piece> enemyPieces = Board.getWhitePieces();

@@ -18,7 +18,7 @@ Ongoing goal: Build a chess engine good enough to beat myself!
 
 #####TODO: 
 
-Complete Pawn promotion and castling movement logic. 
+Complete castling movement logic. 
 Start working on en passant
 
 

@@ -29,7 +29,6 @@ public class ViewController implements Serializable {
 
     private boolean singlePlayer;
 
-
     /**
      * Constructor that intializes the fields, the view, and the model
      * @param gui gui
@@ -50,9 +49,9 @@ public class ViewController implements Serializable {
     /**
      * Does black's turn, getting a move from the engine and making the move
      */
-    private void doBlacksTurn() {
+    private void doComputerTurn(Piece.PieceColor color) {
         //Get the move coordinates
-        Move move = EngineController.move();
+        Move move = EngineController.move(color);
 
         //int startX = move[0], startY = move[1], endX = move[2], endY = move[3];
         int startX = move.getStart().getRow(), startY = move.getStart().getColumn();
@@ -64,7 +63,6 @@ public class ViewController implements Serializable {
         movePiece(start,end);
 
         //highlight the tiles moved
-        //todo
         movementTiles.add(start); movementTiles.add(end);
         highlight(movementTiles);
 
@@ -72,19 +70,20 @@ public class ViewController implements Serializable {
         Board.movePiece(startX, startY, endX, endY);
 
         //end the turn
-        turnComplete();
+        turnComplete(end);
+        unhighlight(movementTiles);
+
     }
 
     /**
      * Initializes the controller
      * Adds an action listener to each tile
      * Implements game logic (i.e. white and black do turn sequentially
-     * //todo: refactor by putting movement logic in separate method
      */
     public void initController(){
 
         ((JButton) gui.getTools().getComponentAtIndex(0)).addActionListener(e -> setupSinglePlayer());
-        ((JButton) gui.getTools().getComponentAtIndex(1)).addActionListener(e -> setupMultiplayer());
+        ((JButton) gui.getTools().getComponentAtIndex(1)).addActionListener(e -> setupMultiPlayer());
 
         for(int i = 0; i < chessBoardSquares.length; i++){
             for(int j=0; j<chessBoardSquares[i].length; j++){
@@ -99,18 +98,19 @@ public class ViewController implements Serializable {
                     if(singlePlayer)
                         singlePlayerAction(row,col,selectedSquare);
                     else
-                        multiplayerAction(row,col,selectedSquare);
+                        multiPlayerAction(row,col,selectedSquare);
                 });
             }
         }
     }
+
 
     private void setupSinglePlayer(){
         singlePlayer = true;
         setupNewGame();
     }
 
-    private void setupMultiplayer(){
+    private void setupMultiPlayer(){
         singlePlayer = false;
         setupNewGame();
     }
@@ -145,8 +145,8 @@ public class ViewController implements Serializable {
                 movePiece(tempTile, selectedSquare);
 
                 //and then do black's turn
-                turnComplete();
-                doBlacksTurn();
+                turnComplete(selectedSquare);
+                doComputerTurn(Piece.PieceColor.BLACK);
 
             } else {
                 gui.setMessage2("Cant move here");
@@ -159,7 +159,7 @@ public class ViewController implements Serializable {
         }
     }
 
-    private void multiplayerAction(int row, int col, Tile selectedSquare){
+    private void multiPlayerAction(int row, int col, Tile selectedSquare){
         //Check if its the first click or the second
         if(firstClick){
             gui.setMessage2("");
@@ -184,7 +184,7 @@ public class ViewController implements Serializable {
             if(movementTiles.contains(selectedSquare)) {
                 movePiece(tempTile,selectedSquare);
 
-                turnComplete();
+                turnComplete(selectedSquare);
             } else {
                 gui.setMessage2("Cant move here");
             }
@@ -199,7 +199,9 @@ public class ViewController implements Serializable {
     /**
      * Ends the turn by displaying a message
      */
-    private void turnComplete(){
+    private void turnComplete(Tile tile){
+        promotePiece(tile);
+
         turn++;
         if(isWhitesTurn())
             gui.setMessage2("White's Turn");
@@ -209,21 +211,18 @@ public class ViewController implements Serializable {
     }
 
     private boolean canPromote(){
-        if(Board.promotedPiece == null){
-            return false;
-        } else {
-            Board.promotedPiece.getColor();
-            return true;
-        }
+        return Board.hasPromoteablePiece;
     }
 
     private void promotePiece(Tile tile){
+        if(!canPromote())
+            return;
         if(tile.getRow() == 7)
             tile.setIcon(new ImageIcon(
                     GUI.chessPieceImages[BLACK][STARTING_ROW[3]]));
         else if (tile.getRow() == 0)
             tile.setIcon(new ImageIcon(
-                    GUI.chessPieceImages[BLACK][STARTING_ROW[3]]));
+                    GUI.chessPieceImages[WHITE][STARTING_ROW[3]]));
     }
 
     /**
@@ -372,5 +371,8 @@ public class ViewController implements Serializable {
         return tiles;
     }
 
+    private Tile cellToTile(Cell cell){
+        return chessBoardSquares[cell.getRow()][cell.getColumn()];
+    }
 
 }

@@ -8,14 +8,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class contains different iterations of my chess engine
+ * Methods such as playEngine1,2,3,4,5 contain different skill levels of AI
+ */
 public class ChessEngine {
 
     /**
      * Modify this method to select which AI to use (playEngine1, playEngine2 etc.)
      * @return move coordinates
      */
-    public Move play() {
-        return playEngine5(2,Piece.PieceColor.BLACK);
+    public Move play(Piece.PieceColor color) {
+        return playEngine5(2,color);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
