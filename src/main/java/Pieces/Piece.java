@@ -189,6 +189,10 @@ public abstract class Piece {
             moves.add(new Move(getLocation(),cell));
         }
 
+        if(moves.size() != legalMoves.size()){
+            System.out.println("FOUND THE PROBLEM IN PIECE.JAVA LINE 184");
+        }
+
         return moves;
     }
 

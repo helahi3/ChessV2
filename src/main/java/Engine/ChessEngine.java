@@ -30,7 +30,27 @@ public class ChessEngine {
     //////////////////////////////////////////////////////////////////////////////////////////
 
 
+    private void printBoard(int engine){
+        System.out.println("start " +engine);
+        List<Move> wMoves = new ArrayList<Move>();
+        for(Piece pc : Board.getWhitePieces()){
+            wMoves.addAll(pc.getMoves());
+        }
+
+        List<Move> bMoves = new ArrayList<Move>();
+        for(Piece pc : Board.getBlackPieces()){
+            bMoves.addAll(pc.getMoves());
+        }
+
+        System.out.println("white pieces: " +Board.getWhitePieces().size() + " moves: " + wMoves.size());
+        System.out.println("black pieces: " +Board.getBlackPieces().size() + " moves: " + bMoves.size());
+
+        System.out.println("end " +engine);
+
+    }
+
     private Move playEngine5(int depth, Piece.PieceColor color){
+      //  printBoard(5);
 
         //if depth is 0, get the move that kills the best possible piece (or a random move)
         if(depth == 0)
@@ -64,9 +84,11 @@ public class ChessEngine {
                 bestScore = currentScore;
                 flaggedMoves.add(move);
             }
-
             Board.undoMove(move);
         }
+
+        if(flaggedMoves.size() == 0)
+            return playEngine1(color);
 
         return getRandomMove(flaggedMoves);
     }
@@ -197,10 +219,12 @@ public class ChessEngine {
      * @return coordinates of move
      */
     private Move playEngine2(Piece.PieceColor color) {
+     //   printBoard(2);
+
         List<Piece> pieces = getPieces(color);
 
         Piece pieceToMove = null;
-        int score = 0;
+        int score = -100;
         Cell destination = null;
 
         for(Piece piece : pieces){
@@ -222,9 +246,9 @@ public class ChessEngine {
         }
 
         //If no destination, that means no piece can be killed, so return a random move
-        if(destination == null)
+        if(destination == null) {
             return playEngine1(color);
-
+        }
 
         return getMove(pieceToMove,destination);
     }
@@ -266,22 +290,39 @@ public class ChessEngine {
      * @return coordinates of move
      */
 //    private Move playEngine1(Piece.PieceColor color){
+//        System.out.println("doing playEngine1 for " + color);
+//        Cell[][] board = Board.getBoard();
 //        Piece randomPiece;
-//        ArrayList<Cell> moves;
+//        ArrayList<Cell> cells;
 //        do{
 //            randomPiece = getRandomPiece(color);
-//            moves = randomPiece.getLegalMoves();
-//        } while (moves.size() == 0);
+//            cells = randomPiece.getLegalMoves();
+//        } while (cells.size() == 0);
 //
-//        return getMove(randomPiece, getRandomMove(moves));
+//
+//        System.out.println("got piece: " + randomPiece);
+//
+//        return getMove(randomPiece, getRandomCell(cells));
 //    }
 
     private Move playEngine1(Piece.PieceColor color){
+
+
         List<Piece> pieces = getPieces(color);
         List<Move> moves = new ArrayList<Move>();
+
+
+
         for(Piece piece : pieces){
             moves.addAll(piece.getMoves());
         }
+
+        System.out.println("PlayEngine1");
+        System.out.println("color: " + color);
+        System.out.println("num pieces: " + pieces.size());
+        System.out.println("num moves: " + moves.size());
+
+
         return getRandomMove(moves);
     }
 
@@ -296,7 +337,14 @@ public class ChessEngine {
 //    }
     private Move getRandomMove(List<Move> moves){
         int randNum = (int) (Math.random() * moves.size());
+
         return moves.get(randNum);
+    }
+
+    private Cell getRandomCell(List<Cell> cells){
+        int randNum = (int) (Math.random() * cells.size());
+
+        return cells.get(randNum);
     }
 
     /**
@@ -304,10 +352,12 @@ public class ChessEngine {
      * @return a random piece from piece list
      */
     private Piece getRandomPiece(Piece.PieceColor color){
-        ArrayList<Piece> blackPieces = (ArrayList<Piece>) Board.getBlackPieces();
+        List<Piece> pieces = getPieces(color);
 
-        int randNum = (int) (Math.random() * blackPieces.size());
-        return blackPieces.get(randNum);
+        int randNum = (int) (Math.random() * pieces.size());
+       // System.out.println("Getting rand piece # " + randNum + " " + pieces.get(randNum));
+
+        return pieces.get(randNum);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////

@@ -519,8 +519,6 @@ public class Board {
 
 
         Board.setBoard(pieces);
-        //print(board);
-
     }
 
     public static void clearBoard(){

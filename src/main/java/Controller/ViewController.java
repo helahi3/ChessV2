@@ -53,6 +53,7 @@ public class ViewController implements Serializable {
         //Get the move coordinates
         Move move = EngineController.move(color);
 
+
         //int startX = move[0], startY = move[1], endX = move[2], endY = move[3];
         int startX = move.getStart().getRow(), startY = move.getStart().getColumn();
         int endX = move.getEnd().getRow(), endY = move.getEnd().getColumn();
