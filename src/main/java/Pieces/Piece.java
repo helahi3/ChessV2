@@ -297,8 +297,8 @@ public abstract class Piece {
      * @return First letter of piece type and first letter of piece color (PW, BR etc)
      */
     public String toString(){
-        return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
-        //return "" + this.color.toString().charAt(0) + this.type.toString().charAt(0);
+        //return "" + this.color.toString().toLowerCase() + " " +this.type.toString().toLowerCase();// + " " + this.getRow() + " " + this.getColumn();
+        return "" + this.color.toString().charAt(0) + this.type.toString().charAt(0);
     }
 
 

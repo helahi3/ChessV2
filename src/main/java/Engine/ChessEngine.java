@@ -19,7 +19,7 @@ public class ChessEngine {
      * @return move coordinates
      */
     public Move play(Piece.PieceColor color) {
-        return playEngine5(1,color);
+        return playEngine5(2,color);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -280,10 +280,8 @@ public class ChessEngine {
             moves.addAll(piece.getMoves());
         }
 
-//        System.out.println("PlayEngine1");
-//        System.out.println("color: " + color);
-//        System.out.println("num pieces: " + pieces.size());
-//        System.out.println("num moves: " + moves.size());
+        if(moves.size() == 0)
+            return new Move(true);
 
 
         return getRandomMove(moves);
@@ -318,7 +316,6 @@ public class ChessEngine {
         List<Piece> pieces = getPieces(color);
 
         int randNum = (int) (Math.random() * pieces.size());
-       // System.out.println("Getting rand piece # " + randNum + " " + pieces.get(randNum));
 
         return pieces.get(randNum);
     }

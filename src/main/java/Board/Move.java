@@ -22,7 +22,9 @@ public class Move {
             score = pieceCaptured.getVALUE();
     }
 
-
+    public Move(boolean checkmate){
+        this.score = 1000;
+    }
 
     public Move(Cell end, int score){
         this.end = end;
