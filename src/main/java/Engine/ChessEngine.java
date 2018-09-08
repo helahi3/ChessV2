@@ -19,7 +19,7 @@ public class ChessEngine {
      * @return move coordinates
      */
     public Move play(Piece.PieceColor color) {
-        return playEngine5(2,color);
+        return playEngine5(1,color);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -30,27 +30,7 @@ public class ChessEngine {
     //////////////////////////////////////////////////////////////////////////////////////////
 
 
-    private void printBoard(int engine){
-        System.out.println("start " +engine);
-        List<Move> wMoves = new ArrayList<Move>();
-        for(Piece pc : Board.getWhitePieces()){
-            wMoves.addAll(pc.getMoves());
-        }
-
-        List<Move> bMoves = new ArrayList<Move>();
-        for(Piece pc : Board.getBlackPieces()){
-            bMoves.addAll(pc.getMoves());
-        }
-
-        System.out.println("white pieces: " +Board.getWhitePieces().size() + " moves: " + wMoves.size());
-        System.out.println("black pieces: " +Board.getBlackPieces().size() + " moves: " + bMoves.size());
-
-        System.out.println("end " +engine);
-
-    }
-
     private Move playEngine5(int depth, Piece.PieceColor color){
-      //  printBoard(5);
 
         //if depth is 0, get the move that kills the best possible piece (or a random move)
         if(depth == 0)
@@ -219,12 +199,11 @@ public class ChessEngine {
      * @return coordinates of move
      */
     private Move playEngine2(Piece.PieceColor color) {
-     //   printBoard(2);
 
         List<Piece> pieces = getPieces(color);
 
         Piece pieceToMove = null;
-        int score = -100;
+        int score = 0;
         Cell destination = null;
 
         for(Piece piece : pieces){
@@ -289,22 +268,6 @@ public class ChessEngine {
      * Starting point for engine
      * @return coordinates of move
      */
-//    private Move playEngine1(Piece.PieceColor color){
-//        System.out.println("doing playEngine1 for " + color);
-//        Cell[][] board = Board.getBoard();
-//        Piece randomPiece;
-//        ArrayList<Cell> cells;
-//        do{
-//            randomPiece = getRandomPiece(color);
-//            cells = randomPiece.getLegalMoves();
-//        } while (cells.size() == 0);
-//
-//
-//        System.out.println("got piece: " + randomPiece);
-//
-//        return getMove(randomPiece, getRandomCell(cells));
-//    }
-
     private Move playEngine1(Piece.PieceColor color){
 
 
@@ -317,10 +280,10 @@ public class ChessEngine {
             moves.addAll(piece.getMoves());
         }
 
-        System.out.println("PlayEngine1");
-        System.out.println("color: " + color);
-        System.out.println("num pieces: " + pieces.size());
-        System.out.println("num moves: " + moves.size());
+//        System.out.println("PlayEngine1");
+//        System.out.println("color: " + color);
+//        System.out.println("num pieces: " + pieces.size());
+//        System.out.println("num moves: " + moves.size());
 
 
         return getRandomMove(moves);

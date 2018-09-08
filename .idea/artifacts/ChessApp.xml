@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact name="ChessApp">
+  <artifact build-on-make="true" name="ChessApp">
     <output-path>$PROJECT_DIR$/out/artifacts/ChessApp</output-path>
     <root id="root">
       <element id="archive" name="chess_v2.jar">
